@@ -86,9 +86,9 @@ public class Tietokanta {
 	public static Connection getConnection() throws Exception {
 		try {
 			String driver = "com.mysql.cj.jdbc.Driver"; // the new one is com.mysql.cj.jdbc.Driver
-			String url = "jdbc:mysql://localhost:3305/library_database"; // add the port and the name of the database
+			String url = "jdbc:mysql://localhost:3306/library_database"; // add the port and the name of the database
 			String username = "root"; // your database name
-			String password = "root"; // your database password
+			String password = "1234"; // your database password
 			Class.forName(driver);
 
 			Connection conn = DriverManager.getConnection(url, username, password);

@@ -24,8 +24,8 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 		
     	
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/AdminManagement.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/LogIn.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/AdminManagement.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/LogIn.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
         
         Scene scene = new Scene(fxmlLoader.load()); // scene
