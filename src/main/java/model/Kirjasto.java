@@ -4,6 +4,7 @@ public class Kirjasto {
 
 	private int kirjasto_id;
 	private String kirjasto_nimi;
+	private String osoite;
 	private int puh_numero;
 	private int posti_numero;
 	private String kaupunki;
@@ -12,9 +13,10 @@ public class Kirjasto {
 
 	}
 
-	public Kirjasto(int kirjasto_id, String kirjasto_nimi, int puh_numero, int posti_numero, String kaupunki) {
+	public Kirjasto(int kirjasto_id, String kirjasto_nimi, String osoite,int puh_numero, int posti_numero, String kaupunki) {
 		this.kirjasto_id = kirjasto_id;
 		this.kirjasto_nimi = kirjasto_nimi;
+		this.osoite = osoite;
 		this.puh_numero = puh_numero;
 		this.posti_numero = posti_numero;
 		this.kaupunki = kaupunki;
@@ -34,6 +36,14 @@ public class Kirjasto {
 
 	public void setKirjasto_nimi(String kirjasto_nimi) {
 		this.kirjasto_nimi = kirjasto_nimi;
+	}
+	
+	public String getOsoite() {
+		return osoite;
+	}
+
+	public void setOsoite(String osoite) {
+		this.osoite = osoite;
 	}
 
 	public int getPuh_numero() {
