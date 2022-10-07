@@ -2,22 +2,32 @@ package model;
 
 public class Kirja {
 
+	private int kirja_id;
 	private String tila;
 	private String luokka;
 	private int kirja_ISBN;
 	private int kirjasto_id;
-	
+
 	public Kirja() {
-		
+
 	}
 
-	public Kirja(String tila, String luokka, int kirja_ISBN, int kirjasto_id) {
+	public Kirja(int kirja_id, String tila, String luokka, int kirja_ISBN, int kirjasto_id) {
+		this.kirja_id = kirja_id;
 		this.tila = tila;
 		this.luokka = luokka;
 		this.kirja_ISBN = kirja_ISBN;
 		this.kirjasto_id = kirjasto_id;
 	}
-	
+
+	public int getKirja_id() {
+		return kirja_id;
+	}
+
+	public void setKirja_id(int kirja_id) {
+		this.kirja_id = kirja_id;
+	}
+
 	public String getTila() {
 		return tila;
 	}

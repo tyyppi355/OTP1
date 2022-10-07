@@ -23,11 +23,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 		
-
-    	//FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Dashboard.fxml"));
-    	FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Asiakastiedot.fxml"));
-        
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Kirjatiedot.fxml"));
+    	
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/AdminManagement.fxml"));
         //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/LogIn.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
         
