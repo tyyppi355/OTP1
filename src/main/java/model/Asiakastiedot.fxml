@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1062.0" type="Pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.Asiakastiedot">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1062.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.AsiakastiedotController">
    <children>
       <Text layoutX="36.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asiakas tiedot">
          <font>
@@ -24,20 +23,20 @@
       <TextField layoutX="35.0" layoutY="256.0" prefWidth="232.0" text="zip code" />
       <TextField layoutX="35.0" layoutY="289.0" prefWidth="232.0" text="osoite" />
       <TextField layoutX="35.0" layoutY="322.0" prefWidth="232.0" text="puhelinnumero" />
-      <TableView layoutX="338.0" layoutY="90.0" prefHeight="200.0" prefWidth="704.0">
+      <TableView fx:id="tableview" layoutX="338.0" layoutY="90.0" prefHeight="200.0" prefWidth="704.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="112.0" text="Etunimi" />
-            <TableColumn prefWidth="79.0" text="Sukunimi" />
-            <TableColumn prefWidth="98.0" text="Kaupunki" />
-            <TableColumn prefWidth="73.0" text="S-posti" />
-            <TableColumn prefWidth="66.0" text="zip code" />
-            <TableColumn prefWidth="71.0" text="Osoite" />
-            <TableColumn prefWidth="128.0" text="Puhelinnumero" />
+          <TableColumn fx:id="tiedot_id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="etunimi" prefWidth="112.0" text="Etunimi" />
+            <TableColumn fx:id="sukunimi" prefWidth="79.0" text="Sukunimi" />
+            <TableColumn fx:id="kaupunki" prefWidth="98.0" text="Kaupunki" />
+            <TableColumn fx:id="s_posti" prefWidth="73.0" text="S-posti" />
+            <TableColumn fx:id="posti_numero" prefWidth="66.0" text="zip code" />
+            <TableColumn fx:id="osoite" prefWidth="71.0" text="Osoite" />
+            <TableColumn fx:id="puh_numero" prefWidth="128.0" text="Puhelinnumero" />
         </columns>
       </TableView>
-      <Button layoutX="945.0" layoutY="54.0" mnemonicParsing="false" text="Edit" />
-      <Button layoutX="991.0" layoutY="54.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="72.0" layoutY="366.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Add new user" />
+      <Button fx:id="edit" layoutX="945.0" layoutY="54.0" mnemonicParsing="false" onAction="#editUser" text="Edit" />
+      <Button fx:id="delete" layoutX="991.0" layoutY="54.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete" />
+      <Button fx:id="addUser" layoutX="72.0" layoutY="366.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="158.0" text="Add new user" />
    </children>
-</fx:root>
+</Pane>

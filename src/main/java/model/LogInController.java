@@ -1,6 +1,6 @@
 package model;
 
-import javafx.fxml.FXML; 
+import javafx.fxml.FXML;  
 import javafx.fxml.FXMLLoader; 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,16 +13,19 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
+import application.Controller;
 import application.Main;
 
 
 
-public class LogInController {
+public class LogInController{
 
 	public LogInController() {
 		
 	}
-	
+	private static Stage stage;
 	@FXML
 	private Button button;
 	@FXML
@@ -39,16 +42,35 @@ public class LogInController {
 	}
 	
 	public void checkLogin() throws IOException {
-		Main main = new Main();
+		
 		if(username.getText().toString().equals("admin") && password.getText().toString().equals("123")) {
 			error.setText("Success!");
+			System.out.println("Success!");
 			
-			main.changeScene("Dashboard.fxml");
-			
+			Stage primaryStage = new Stage();
+	        Parent root = FXMLLoader.load(getClass().getResource("AdminManagement.fxml"));
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
+	        
 		}else if(username.getText().isEmpty() && password.getText().isEmpty()) {
-			error.setText("Please enter your data.");
+			//error.setText("Please enter your data.");
+			String message = "Please enter your data.";
+			JOptionPane.showMessageDialog(null, message);
+		}else if(username.getText().isEmpty() || password.getText().isEmpty()) {
+			//error.setText("Please enter your data.");
+			String message = "Please enter your data.";
+			JOptionPane.showMessageDialog(null, message);
 		}else {
-			error.setText("Wrong username or password");
+			//error.setText("Wrong username or password");
+			String message = "Wrong username or password";
+			JOptionPane.showMessageDialog(null, message);
+			
+			//JOptionPane.showMessageDialog(this, "Wrong username or password");
+			
 		}
 	}
+	protected void onStartButtonClick() throws IOException {
+		DashboardController.changeScene();
+    }
 }

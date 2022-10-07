@@ -1,5 +1,5 @@
 package application;
-import model.*;
+import model.*;  
 
 import java.io.IOException;
 import java.util.Objects;
@@ -14,35 +14,32 @@ import model.Rajapinta;
 
 public class Main extends Application {
 
-	private static Stage stage;
-	
-	public void start(Stage primaryStage) throws Exception {
-		
-		this.stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
-        
-		primaryStage.setScene(new Scene(root, 900, 330));
-        
-		primaryStage.setTitle("BookBeast");
-        //stage.setScene(stage);
-		primaryStage.show();
+    private static Stage primaryStage;
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
-	public void changeScene(String fxml) throws IOException{
-		Parent pane = FXMLLoader.load(getClass().getResource("/model/Dashboard.fxml"));
+    @Override
+    public void start(Stage stage) throws IOException {
 		
-		Scene scene = new Scene(pane);
-		stage.setScene(scene);
-		stage.show();
-		
-		
-		//Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-		//Scene scene = new Scene(pane);
-		//stage.getScene().setRoot(pane);
-		//this.stage.getScene().setRoot(pane);
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+
+    	//FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Dashboard.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Asiakastiedot.fxml"));
+        
+        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/Kirjatiedot.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/LogIn.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
+        
+        Scene scene = new Scene(fxmlLoader.load()); // scene
+
+        primaryStage = stage; // current stage(primaryStage) is stage
+        stage.setTitle("Book Beast!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
 }

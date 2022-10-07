@@ -6,6 +6,7 @@ public class Asiakas {
 	private String sukunimi;
 	private int kirja_id;
 	private int tiedot_id;
+	private Asiakastiedot asiakastiedot;
 	
 	public Asiakas() {
 		
@@ -50,4 +51,13 @@ public class Asiakas {
 		this.tiedot_id = tiedot_id;
 	}
 
+	public Asiakastiedot getAsiakastiedot() {
+		return asiakastiedot;
+	}
+
+	public void setAsiakastiedot(Asiakastiedot asiakastiedot) {
+		this.asiakastiedot = asiakastiedot;
+	}
+
+	
 }

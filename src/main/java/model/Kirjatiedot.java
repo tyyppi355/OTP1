@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public class Kirjatiedot {
 
 	private int kirja_ISBN;
@@ -9,12 +11,20 @@ public class Kirjatiedot {
 	private String kuva;
 	private int julkasuvuosi;
 	private int sivumäärä;
+	private String erapaiva;
 	
 	public Kirjatiedot() {
 		
 	}
 
-	public Kirjatiedot(int kirja_ISBN, String nimi, String kunstantaja, String kirjoittajat, String kuva, int julkasuvuosi, int sivumäärä) {
+	/*public Kirjatiedot(int kirja_ISBN, String nimi, String Eräpäivä ) {
+		this.kirja_ISBN = kirja_ISBN;
+		this.nimi = nimi;
+		this.Eräpäivä = Eräpäivä;
+	}*/
+	
+
+	public Kirjatiedot(int kirja_ISBN, String nimi, String kunstantaja, String kirjoittajat, String kuva, int julkasuvuosi, int sivumäärä, String erapaiva) {
 		this.kirja_ISBN = kirja_ISBN;
 		this.nimi = nimi;
 		this.kunstantaja = kunstantaja;
@@ -22,9 +32,17 @@ public class Kirjatiedot {
 		this.kuva = kuva;
 		this.julkasuvuosi = julkasuvuosi;
 		this.sivumäärä = sivumäärä;
-		
+		this.erapaiva = erapaiva;
 	}
 	
+	public String getErapaiva() {
+		return erapaiva;
+	}
+
+	public void setErapaiva(String erapaiva) {
+		this.erapaiva = erapaiva;
+	}
+
 	public int getKirja_ISBN() {
 		return kirja_ISBN;
 	}

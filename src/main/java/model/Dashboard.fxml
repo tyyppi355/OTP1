@@ -14,7 +14,6 @@
          <children>
             <TextField fx:id="search" layoutX="20.0" layoutY="14.0" promptText="hakee" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="1031.0" AnchorPane.topAnchor="14.0" />
             <Button fx:id="searchButton" mnemonicParsing="false" text="Search" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="960.0" AnchorPane.topAnchor="14.0" />
-            <Button fx:id="buttonLogOut" layoutX="1087.0" layoutY="27.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="25.0" prefWidth="99.0" text="Log Out" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="1087.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="27.0" />
          </children>
       </AnchorPane>
    </top>
@@ -33,11 +32,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView prefHeight="200.0" prefWidth="667.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="lainaaView" editable="true" prefHeight="200.0" prefWidth="667.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="bookID" prefWidth="117.0" text="ID" />
-                <TableColumn prefWidth="559.0" text="Nimi" />
-                  <TableColumn prefWidth="204.0" text="Eräpäivä" />
+                <TableColumn fx:id="idColumn" prefWidth="117.0" text="kirja_ISBN" />
+                <TableColumn fx:id="nimiColumn" prefWidth="559.0" text="Nimi" />
+                  <TableColumn fx:id="erapaivaColumn" prefWidth="339.0" text="Eräpäivä" />
               </columns>
                <opaqueInsets>
                   <Insets left="20.0" />

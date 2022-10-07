@@ -1,6 +1,6 @@
 package model;
 
-public class Asiakastiedot {
+public class Asiakastiedot extends Asiakas {
 
 	private int tiedot_id;
 	private String kaupunki;
