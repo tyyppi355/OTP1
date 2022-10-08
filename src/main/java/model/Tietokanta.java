@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Tietokanta {
 
 	// Admin class
-	protected static Admin admin = new Admin();
+	//protected static Admin admin = new Admin("admin2","123",2);
 	private static String Käyttäjätunnus;
 	private static String salasana;
 //	private static int kirjasto_id; // use the kirjasto for (kirjasto_id)
@@ -42,14 +42,6 @@ public class Tietokanta {
 	private static int posti_numero_kirjasto;
 	private static String kaupunki_kirjasto;
 	
-	// Kirja class
-	protected static Kirja kirja = new Kirja();
-	private static int kirja_id;
-	private static String tila;
-	private static String luokka;
-//	private static int kirja_ISBN;  // use the kirjatiedot for (kirja_ISBN)
-//	private static int kirjasto_id; // use the kirjasto for (kirjasto_id)
-	
 	// asiakas class
 	protected static Asiakas asiakas = new Asiakas();
 	private static String etunimi;
@@ -72,13 +64,16 @@ public class Tietokanta {
 		// get_kirjasto();
 
 		// post_kirja();
-		//get_kirja();
+		ArrayList<Kirja> kirjat = get_kirjat();
+		System.out.println(kirjat.get(0).getkTiedot().getNimi() + " " + kirjat.get(0).getKirja_ISBN());
+		System.out.println(kirjat.get(1).getkTiedot().getNimi() + " " + kirjat.get(1).getKirja_ISBN());
 
 		// post_asiakas();
 		// get_asiakas();
-
-		// post_admin();
-		// get_admin();
+		//post_admin(new Admin("admin3","222",4));
+		ArrayList<Admin> a = get_admin();
+		System.out.println(a.get(0).getKäyttäjätunnu());
+		System.out.println(a.get(1).getKäyttäjätunnu());
 
 	}
 
@@ -170,12 +165,13 @@ public class Tietokanta {
 	}
 
 	
-	public static void post_kirjan_tiedot() throws Exception {
+	public static void post_kirjan_tiedot(Kirjatiedot kirjatiedot) throws Exception {
 
 		try {
 			Connection connection = getConnection();
+			System.out.println(kirjatiedot.getKirja_ISBN() + kirjatiedot.getNimi() + kirjatiedot.getKunstantaja());
 			PreparedStatement posted = connection.prepareStatement("insert into kirjan_tiedot "
-					+ " (kirja_ISBN, nimi, kunstantaja, kirjoittajat, kuva, julkasuvuosi, sivumäärä)" + " values ('"
+					+ " (kirja_ISBN, nimi, kustantaja, kirjoittajat, kuva, julkaisuvuosi, sivumäärä)" + " values ('"
 					+ kirjatiedot.getKirja_ISBN() + "', '" + kirjatiedot.getNimi() + "', '"
 					+ kirjatiedot.getKunstantaja() + "', '" + kirjatiedot.getKirjoittajat() + "', '"
 					+ kirjatiedot.getKuva() + "', '" + kirjatiedot.getJulkasuvuosi() + "', '"
@@ -277,6 +273,8 @@ public class Tietokanta {
 				System.out.print("posti_numero: " + resultSet.getInt("posti_numero") + ", ");
 				System.out.print("kaupunki: " + resultSet.getString("kaupunki") + "\n");
 				
+				Kirjasto k = new Kirjasto();
+				
 				kirjasto_id = resultSet.getInt("kirjasto_id");
 				kirjasto_nimi = resultSet.getString("kirjasto_nimi");
 				kirjasto_osoite = resultSet.getString("kirjasto_osoite");
@@ -309,7 +307,7 @@ public class Tietokanta {
 	}
 
 	
-	public static void post_kirja() throws Exception {
+	public static void post_kirja(Kirja kirja) throws Exception {
 
 		try {
 			Connection connection = getConnection();
@@ -326,38 +324,35 @@ public class Tietokanta {
 
 	}
 
-	public static ArrayList<String> get_kirja() throws Exception {
+	public static ArrayList<Kirja> get_kirjat() throws Exception {
 		try {
 			Connection connection = getConnection();
-			PreparedStatement getData = connection.prepareStatement("SELECT * FROM kirja");															// too
+			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN";
+			PreparedStatement getData = connection.prepareStatement(query);
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<String> arrayList = new ArrayList<String>(); // no need for it if you don't store the data
+			ArrayList<Kirja> arrayList = new ArrayList<Kirja>(); // no need for it if you don't store the data
 
 			while (resultSet.next()) {
 				
-				System.out.print("kirja_id: " + resultSet.getInt("kirja_id") + ", ");
-				System.out.print("tila: " + resultSet.getString("tila") + ", ");
-				System.out.print("luokka: " + resultSet.getString("luokka") + ", ");
-				System.out.print("kirja_ISBN: " + resultSet.getInt("kirja_ISBN") + ", ");
-				System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + "\n");
+				System.out.println("--Kirja--- kirja_id: " + resultSet.getInt("kirja_id"));
+				System.out.println("---Kirjan_tiedot--- nimi: " + resultSet.getString("nimi") + "\n");
 				
-				kirja_id = resultSet.getInt("kirja_id");
-				tila = resultSet.getString("tila");
-				luokka = resultSet.getString("luokka");
-//				kirja_ISBN = resultSet.getInt("kirja_ISBN"); // what if we use kirja_ISBN value without a sign to new value
-//				kirjasto_id = resultSet.getInt("kirjasto_id"); // what if we use kirjasto_id value without a sign to new value
+				int kirja_id = resultSet.getInt("kirja_id");
+				String tila = resultSet.getString("tila");
+				String luokka = resultSet.getString("luokka");
+				long kirja_ISBN = resultSet.getLong("kirja_ISBN");
+				int kirjasto_id = resultSet.getInt("kirjasto_id");
+				String nimi = resultSet.getString("nimi");
+				String kustantaja = resultSet.getString("kustantaja");
+				String kirjoittajat = resultSet.getString("kirjoittajat");
+				String kuva = resultSet.getString("kuva");
+				int julkaisuvuosi = resultSet.getInt("julkaisuvuosi");
+				int sivumäärä = resultSet.getInt("sivumäärä");
 				
-				kirja.setKirja_id(kirja_id);
-				kirja.setTila(tila);
-				kirja.setLuokka(luokka);
-				kirja.setKirja_ISBN(kirja_ISBN);
-				kirja.setKirjasto_id(kirjasto_id);
 				
-				arrayList.add(resultSet.getString("kirja_id")); // we add the kirja_id to the arrayList
-				arrayList.add(resultSet.getString("tila"));
-				arrayList.add(resultSet.getString("luokka"));
-				arrayList.add(resultSet.getString("kirja_ISBN"));
-				arrayList.add(resultSet.getString("kirjasto_id"));
+				
+				arrayList.add(new Kirja(kirja_id,tila,luokka,kirja_ISBN,kirjasto_id,
+						new Kirjatiedot(kirja_ISBN,nimi,kustantaja,kirjoittajat,kuva,julkaisuvuosi,sivumäärä)));
 			}
 			System.out.println("All have been selected!");
 			// System.out.println("arraylist: " + arrayList.get(1));
@@ -410,7 +405,7 @@ public class Tietokanta {
 				
 				asiakas.setEtunimi(etunimi);
 				asiakas.setSukunimi(sukunimi);
-				asiakas.setKirja_id(kirja_id);
+				//asiakas.setKirja_id(kirja_id);
 				asiakas.setTiedot_id(tiedot_id);
 				
 				arrayList.add(resultSet.getString("as_id")); // we add the as_id to the arrayList
@@ -431,7 +426,7 @@ public class Tietokanta {
 	}
 
 	
-	public static void post_admin() throws Exception {
+	public static void post_admin(Admin admin) throws Exception {
 
 		try {
 			Connection connection = getConnection();
@@ -449,32 +444,28 @@ public class Tietokanta {
 
 	}
 
-	public static ArrayList<String> get_admin() throws Exception {
+	public static ArrayList<Admin> get_admin() throws Exception {
 		try {
 
 			Connection connection = getConnection();
 			PreparedStatement getData = connection.prepareStatement("SELECT * FROM admin");																
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<String> arrayList = new ArrayList<String>(); // no need for it if you don't store the data
+			ArrayList<Admin> arrayList = new ArrayList<Admin>(); // no need for it if you don't store the data
 
 			while (resultSet.next()) {
 
 				// print out to the console all the data form the database
-				System.out.print("Käyttäjätunnus: " + resultSet.getString("Käyttäjätunnus") + ", ");
-				System.out.print("salasana: " + resultSet.getString("salasana") + ", ");
-				System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + "\n");
+				//System.out.print("Käyttäjätunnus: " + resultSet.getString("Käyttäjätunnus") + ", ");
+				//System.out.print("salasana: " + resultSet.getString("salasana") + ", ");
+				//System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + "\n");
 
 				Käyttäjätunnus = resultSet.getString("Käyttäjätunnus");
 				salasana = resultSet.getString("salasana");
-//				kirjasto_id = resultSet.getInt("kirjasto_id"); // what if we use kirjasto_id value without a sign to new value
+				kirjasto_id = resultSet.getInt("kirjasto_id"); // what if we use kirjasto_id value without a sign to new value
+				
 
-				admin.setKäyttäjätunnu(Käyttäjätunnus);
-				admin.setSalasana(salasana);
-				admin.setKirjasto_id(kirjasto_id);
+				arrayList.add(new Admin(Käyttäjätunnus,salasana,kirjasto_id));
 
-				arrayList.add(resultSet.getString("Käyttäjätunnus")); // we add the Käyttäjätunnus to the arrayList
-				arrayList.add(resultSet.getString("salasana"));
-				arrayList.add(resultSet.getString("kirjasto_id"));
 				
 			}
 			;

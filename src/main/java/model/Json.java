@@ -11,9 +11,13 @@ public class Json {
 	
 		public class Docs{
 			
+			List<String> isbn;
 			String title;
 			List<String> publisher;
 			List<String> author_name;
+			String cover_i;
+			int first_publish_year;
+			int number_of_pages_median;
 			
 		}
 		

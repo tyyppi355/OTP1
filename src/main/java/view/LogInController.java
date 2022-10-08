@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import javafx.fxml.FXML;   
 import javafx.fxml.FXMLLoader; 
@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Tietokanta;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 
@@ -24,6 +25,9 @@ import application.Main;
 import application.Main;
 
 public class LogInController extends Main {
+	
+	private String inputNullError = "Please enter your data.";
+	private String inputWrongError = "Wrong username or password";
 
 	public LogInController() {
 
@@ -51,13 +55,14 @@ public class LogInController extends Main {
 		try {
 			//tietokanta.get_admin(); // no need for this
 			//System.out.println("in the Login: " + tietokanta.admin.getKäyttäjätunnu());
-			System.out.println("in the Login arry user name: " + tietokanta.get_admin().get(0)); // this work
-			System.out.println("in the Login arry password: " + tietokanta.get_admin().get(1)); // this work
+			System.out.println("in the Login arry user name: " + tietokanta.get_admin().get(0).getKäyttäjätunnu()); // this work
+			System.out.println("in the Login arry password: " + tietokanta.get_admin().get(0).getSalasana()); // this work
 			
 			// tietokanta.admin.getKäyttäjätunnu() // and this also work
 			// tietokanta.admin.getSalasana() // and this also work
 			
-			if (username.getText().toString().equals(tietokanta.get_admin().get(0)) && password.getText().toString().equals(tietokanta.get_admin().get(1))) {
+			if (username.getText().toString().equals(tietokanta.get_admin().get(0).getKäyttäjätunnu())
+					&& password.getText().toString().equals(tietokanta.get_admin().get(0).getSalasana())) {
 					
 				error.setText("Success!");
 				Stage primaryStage = new Stage();
@@ -68,16 +73,13 @@ public class LogInController extends Main {
 
 			} else if(username.getText().isEmpty() && password.getText().isEmpty()) {
 				//error.setText("Please enter your data.");
-				String message1 = "Please enter your data.";
-				JOptionPane.showMessageDialog(null, message1);
+				JOptionPane.showMessageDialog(null, inputNullError);
 			} else if(username.getText().isEmpty() || password.getText().isEmpty()) {
 				//error.setText("Please enter your data.");
-				String message2 = "Please enter your data.";
-				JOptionPane.showMessageDialog(null, message2);
+				JOptionPane.showMessageDialog(null, inputNullError);
 			}else {
 				//error.setText("Wrong username or password");
-				String message3 = "Wrong username or password";
-				JOptionPane.showMessageDialog(null, message3);
+				JOptionPane.showMessageDialog(null, inputWrongError);
 							
 			}
 		} catch (Exception e) {

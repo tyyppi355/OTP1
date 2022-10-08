@@ -1,4 +1,4 @@
-package model;
+package view;
 
 
 import javafx.fxml.FXML;   
@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Kirjatiedot;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +27,7 @@ import java.net.URL;
 
 
 
-public class DashboardController implements Initializable{
+public class DashboardController extends EngineUI implements Initializable{
 
 	public DashboardController() {
 		
@@ -50,7 +51,7 @@ public class DashboardController implements Initializable{
 	    
 	    
 	    ObservableList<Kirjatiedot> data = FXCollections.observableArrayList(
-	    			new Kirjatiedot(31223, "SceneBuilder", "Oracle", "Oracle CO.", "Java Framework", 2000, 300, "Data")
+	    			new Kirjatiedot(31223, "SceneBuilder", "Oracle", "Oracle CO.", "Java Framework", 2000, 300)
 				);
 	
 	
@@ -86,7 +87,7 @@ public class DashboardController implements Initializable{
 	        FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));
 	        Scene scene = new Scene(fxmlLoader.load()); // scene
 
-	        Stage stage = Main.getPrimaryStage();
+	        Stage stage = getPrimaryStage();
 	        stage.hide();
 	        stage.setTitle("Book Beast");
 	        stage.setScene(scene);

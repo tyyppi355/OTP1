@@ -1,42 +1,24 @@
 package application;
-import model.*;  
 
-import java.io.IOException;
-import java.util.Objects;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader; 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import model.Json; 
+import model.Kirjatiedot;
 import model.Rajapinta;
 
-public class Main extends Application {
-
-    private static Stage primaryStage;
-
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    @Override
-    public void start(Stage stage) throws IOException {
+public class Main {
+	
+	public static void main(String args[]) {
 		
-    	
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/AdminManagement.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/model/LogIn.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
-        
-        Scene scene = new Scene(fxmlLoader.load()); // scene
+		Rajapinta.yhteys("9781974725915");
+		Kirjatiedot k = Rajapinta.getKirjatiedot();
+		System.out.println(k.getKirjoittajat());
+		System.out.println(k.getNimi());
+		Rajapinta.yhteys("9783453533011");
+		Kirjatiedot k2 = Rajapinta.getKirjatiedot();
+		System.out.println(k2.getKirjoittajat());
+		System.out.println(k2.getNimi());
+		
+		view.EngineUI.main(args);
+		
+	}
 
-        primaryStage = stage; // current stage(primaryStage) is stage
-        stage.setTitle("Book Beast!");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
+    
 }

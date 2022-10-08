@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Asiakas;
+import model.Asiakastiedot;
 
 public class AsiakastiedotController implements Initializable {
 	
