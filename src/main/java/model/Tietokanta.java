@@ -80,15 +80,16 @@ public class Tietokanta {
 	
 	public static Connection getConnection() throws Exception {
 		try {
-			String driver = "com.mysql.cj.jdbc.Driver"; // the new one is com.mysql.cj.jdbc.Driver
-			String url = "jdbc:mysql://localhost:3306/library_database"; // add the port and the name of the database
-			String username = "root"; // your database name
-			String password = "1234"; // your database password
-			Class.forName(driver);
-
-			Connection conn = DriverManager.getConnection(url, username, password);
+			
+			//String driver = "jdbc:mariadb"; // the new one is com.mysql.cj.jdbc.Driver
+			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk"; // add the port and the name of the database
+			String username = "rikukosk"; // your database name
+			String password = "Hevonen420"; // your database password
+			
+			Connection connection = DriverManager.getConnection(url,username,password);
+			
 			System.out.println("Connected!!");
-			return conn;
+			return connection;
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -351,8 +352,15 @@ public class Tietokanta {
 				
 				
 				
-				arrayList.add(new Kirja(kirja_id,tila,luokka,kirja_ISBN,kirjasto_id,
-						new Kirjatiedot(kirja_ISBN,nimi,kustantaja,kirjoittajat,kuva,julkaisuvuosi,sivumäärä)));
+				arrayList.add(new Kirja(resultSet.getInt("kirja_id"),resultSet.getString("tila"),resultSet.getString("luokka")
+						,resultSet.getLong("kirja_ISBN"),resultSet.getInt("kirjasto_id"),
+						new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+								resultSet.getString("nimi")
+								,resultSet.getString("kustantaja"),
+								resultSet.getString("kirjoittajat")
+								,resultSet.getString("kuva"),
+								resultSet.getInt("julkaisuvuosi"),
+								resultSet.getInt("sivumäärä"))));
 			}
 			System.out.println("All have been selected!");
 			// System.out.println("arraylist: " + arrayList.get(1));
