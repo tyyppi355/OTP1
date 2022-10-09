@@ -61,8 +61,8 @@ public class LogInController extends Main {
 				// tietokanta.admin.getKäyttäjätunnu() // and this also work
 				// tietokanta.admin.getSalasana() // and this also work
 				
-				if (username.getText().toString().equals(tietokanta.get_admin().get(0).getKäyttäjätunnu())
-						&& password.getText().toString().equals(tietokanta.get_admin().get(0).getSalasana())) {
+				if (username.getText().toString().equals(tietokanta.get_admin(1).getKäyttäjätunnu())
+						&& password.getText().toString().equals(tietokanta.get_admin(1).getSalasana())) {
 						
 					error.setText("Success!");
 					

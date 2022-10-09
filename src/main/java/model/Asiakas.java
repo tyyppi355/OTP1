@@ -2,21 +2,31 @@ package model;
 
 public class Asiakas {
 
+	private int as_id;
 	private String etunimi;
 	private String sukunimi;
+	private String puhelinnum;
 	private int kirja_id;
-	private int tiedot_id;
+
 	private Asiakastiedot asiakastiedot;
-	
+
 	public Asiakas() {
-		
+
 	}
 	
-	public Asiakas(String etunimi, String sukunimi, int kirja_id, int tiedot_id) {
+	// get
+	public Asiakas(int as_id, String etunimi, String sukunimi, Asiakastiedot asiakastiedot) {
+		this.as_id = as_id;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
-		this.kirja_id = kirja_id;
-		this.tiedot_id = tiedot_id;
+		this.asiakastiedot = asiakastiedot;
+	}
+	
+	// post
+	public Asiakas(String etunimi, String sukunimi, String puhelinnum) { // new
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puhelinnum = puhelinnum;
 	}
 
 	public String getEtunimi() {
@@ -43,14 +53,6 @@ public class Asiakas {
 		this.kirja_id = kirja_id;
 	}
 
-	public int getTiedot_id() {
-		return tiedot_id;
-	}
-
-	public void setTiedot_id(int tiedot_id) {
-		this.tiedot_id = tiedot_id;
-	}
-
 	public Asiakastiedot getAsiakastiedot() {
 		return asiakastiedot;
 	}
@@ -59,5 +61,23 @@ public class Asiakas {
 		this.asiakastiedot = asiakastiedot;
 	}
 
+	public int getAs_id() {
+		return as_id;
+	}
+
+	public void setAs_id(int as_id) {
+		this.as_id = as_id;
+	}
+
+	public String getPuhelinnum() {
+		return puhelinnum;
+	}
+
+	public void setPuhelinnum(String puhelinnum) {
+		this.puhelinnum = puhelinnum;
+	}
 	
+	
+
+
 }

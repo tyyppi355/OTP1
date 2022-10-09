@@ -8,69 +8,32 @@ import java.util.ArrayList;
 
 public class Tietokanta {
 
-	// Admin class
-	//protected static Admin admin = new Admin("admin2","123",2);
-	private static String Käyttäjätunnus;
-	private static String salasana;
-//	private static int kirjasto_id; // use the kirjasto for (kirjasto_id)
-
-	// Asiakastiedot class
-	protected static Asiakastiedot asiakastiedot = new Asiakastiedot();
-	private static int tiedot_id;
-	private static String kaupunki;
-	private static String s_posti;
-	private static int posti_numero;
-	private static String osoite;
-	private static int puh_numero;
-
-	// Kirjatiedot class
-	protected static Kirjatiedot kirjatiedot = new Kirjatiedot();
-	private static int kirja_ISBN;
-	private static String nimi;
-	private static String kunstantaja;
-	private static String kirjoittajat;
-	private static String kuva;
-	private static int julkasuvuosi;
-	private static int sivumäärä;
-	
-	// kirjasto class
-	protected static Kirjasto kirjasto = new Kirjasto();
-	private static int kirjasto_id;
-	private static String kirjasto_nimi;
-	private static String kirjasto_osoite;
-	private static int puh_numero_kirjasto;
-	private static int posti_numero_kirjasto;
-	private static String kaupunki_kirjasto;
-	
-	// asiakas class
-	protected static Asiakas asiakas = new Asiakas();
-	private static String etunimi;
-	private static String sukunimi;
-//	private static int kirja_id;  // use the kirja for (kirja_id)
-//	private static int tiedot_id; // use the asiakastiedot for (tiedot_id)
-	
 
 	public static void main(String[] args) throws Exception {
 
-		// getConnection(); // The connection is already their in the post()
+		// getConnection(); 
 
-		// post_asiakas_tiedot();
+		 //post_asiakas_tiedot(new Asiakastiedot("qwe", "wqerw", "123", "werwer","234"));
 		//get_asiakas_tiedot();
 
 		// post_kirjan_tiedot();
 		 //get_kirjan_tiedot();
 
 		// post_kirjasto();
-		// get_kirjasto();
+		// get_kirjasto(2);
 
 		// post_kirja();
-		ArrayList<Kirja> kirjat = get_kirjat();
-		System.out.println(kirjat.get(0).getkTiedot().getNimi() + " " + kirjat.get(0).getKirja_ISBN());
-		System.out.println(kirjat.get(1).getkTiedot().getNimi() + " " + kirjat.get(1).getKirja_ISBN());
+		//   get_kirja(1);
+		
+//		ArrayList<Kirja> kirjat = get_kirjat();
+//		System.out.println(kirjat.get(0).getkTiedot().getNimi() + " " + kirjat.get(0).getKirja_ISBN());
+//		System.out.println(kirjat.get(1).getkTiedot().getNimi() + " " + kirjat.get(1).getKirja_ISBN());
 
 		// post_asiakas();
-		// get_asiakas();
-		//post_admin(new Admin("admin3","222",4));
+		 get_asiakas(5);
+		 
+		//post_admin();
+		// get_admin(4);
 
 	}
 
@@ -78,10 +41,9 @@ public class Tietokanta {
 	public static Connection getConnection() throws Exception {
 		try {
 			
-			//String driver = "jdbc:mariadb"; // the new one is com.mysql.cj.jdbc.Driver
-			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk"; // add the port and the name of the database
-			String username = "rikukosk"; // your database name
-			String password = "Mustekala1337"; // your database password
+			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk";
+			String username = "rikukosk";
+			String password = "Mustekala1337";
 			
 			Connection connection = DriverManager.getConnection(url,username,password);
 			
@@ -99,8 +61,8 @@ public class Tietokanta {
 		try {
 			Connection connection = getConnection();
 			PreparedStatement posted = connection.prepareStatement(
-					"insert into asiakas_tiedot " + " (tiedot_id , kaupunki, s_posti, posti_numero, osoite, puh_numero)"
-							+ " values ('"+asiakastiedot.getTiedot_id()+"', '" + asiakastiedot.getKaupunki() + "', '" + asiakastiedot.getS_posti() + "', '"
+					"insert into asiakas_tiedot " + " (kaupunki, s_posti, posti_numero, osoite, puh_numero)"
+							+ " values ('" + asiakastiedot.getKaupunki() + "', '" + asiakastiedot.getS_posti() + "', '"
 							+ asiakastiedot.getPosti_numero() + "', '" + asiakastiedot.getOsoite() + "', '"
 							+ asiakastiedot.getPuh_numero() + "')");
 
@@ -155,48 +117,28 @@ public class Tietokanta {
 		}
 	}
 
-	public static Kirjasto get_kirjasto(String kirjastoid) throws Exception { // Yksi kirjasto haku
+	public static Kirjasto get_kirjasto(int kirjastoid) throws Exception { // Yksi kirjasto haku
 		try {
 			Connection connection = getConnection();
-			PreparedStatement getData = connection.prepareStatement("SELECT * FROM kirjasto");	// lisää where kyselyyn															
+			PreparedStatement getData = connection.prepareStatement("SELECT * FROM kirjasto WHERE kirjasto_id = "+kirjastoid+"");														
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<String> arrayList = new ArrayList<String>();
 
-			while (resultSet.next()) {
-				
+				resultSet.next();
 				System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + ", ");
 				System.out.print("kirjasto_nimi: " + resultSet.getString("kirjasto_nimi") + ", ");
 				System.out.print("kirjasto_osoite: " + resultSet.getString("kirjasto_osoite") + ", ");
 				System.out.print("puh_numero: " + resultSet.getInt("puh_numero") + ", ");
 				System.out.print("posti_numero: " + resultSet.getInt("posti_numero") + ", ");
 				System.out.print("kaupunki: " + resultSet.getString("kaupunki") + "\n");
-				
-				Kirjasto k = new Kirjasto();
-				
-				kirjasto_id = resultSet.getInt("kirjasto_id");
-				kirjasto_nimi = resultSet.getString("kirjasto_nimi");
-				kirjasto_osoite = resultSet.getString("kirjasto_osoite");
-				puh_numero_kirjasto = resultSet.getInt("puh_numero");
-				posti_numero_kirjasto = resultSet.getInt("posti_numero");
-				kaupunki_kirjasto = resultSet.getString("kaupunki");
-				
-				kirjasto.setKirjasto_id(kirjasto_id);
-				kirjasto.setKirjasto_nimi(kirjasto_nimi);
-				kirjasto.setOsoite(kirjasto_osoite);
-				kirjasto.setPuh_numero(puh_numero_kirjasto);
-				kirjasto.setPosti_numero(posti_numero_kirjasto);
-				kirjasto.setKaupunki(kaupunki_kirjasto);
-				
-				arrayList.add(resultSet.getString("kirjasto_id")); // we add the kirjasto_id to the arrayList
-				arrayList.add(resultSet.getString("kirjasto_nimi"));
-				arrayList.add(resultSet.getString("kirjasto_osoite"));
-				arrayList.add(resultSet.getString("puh_numero"));
-				arrayList.add(resultSet.getString("posti_numero"));
-				arrayList.add(resultSet.getString("kaupunki"));
-			}
+
 			System.out.println("All have been selected!");
-			// System.out.println("arraylist: " + arrayList.get(0));
-			return new Kirjasto(); //muista contructor täyteen
+
+			return new Kirjasto(resultSet.getInt("kirjasto_id"), 
+					resultSet.getString("kirjasto_nimi"), 
+					resultSet.getString("kirjasto_osoite"), 
+					resultSet.getInt("puh_numero"), 
+					resultSet.getInt("posti_numero"),
+					resultSet.getString("kaupunki"));
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -222,50 +164,84 @@ public class Tietokanta {
 
 	}
 
-	public static ArrayList<Kirja> get_kirjat() throws Exception {
+//	public static ArrayList<Kirja> get_kirjat() throws Exception {
+//		try {
+//			Connection connection = getConnection();
+//			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN";
+//			PreparedStatement getData = connection.prepareStatement(query);
+//			ResultSet resultSet = getData.executeQuery();
+//			ArrayList<Kirja> arrayList = new ArrayList<Kirja>();
+//
+//			while (resultSet.next()) {
+//				
+//				System.out.println("--Kirja--- kirja_id: " + resultSet.getInt("kirja_id"));
+//				System.out.println("---Kirjan_tiedot--- nimi: " + resultSet.getString("nimi") + "\n");
+//				
+//				arrayList.add(new Kirja(resultSet.getInt("kirja_id"),
+//						resultSet.getString("tila"),
+//						resultSet.getString("luokka"),
+//						resultSet.getLong("kirja_ISBN"),
+//						resultSet.getInt("kirjasto_id"),
+//						new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+//								resultSet.getString("nimi")
+//								,resultSet.getString("kustantaja"),
+//								resultSet.getString("kirjoittajat")
+//								,resultSet.getString("kuva"),
+//								resultSet.getInt("julkaisuvuosi"),
+//								resultSet.getInt("sivumäärä"))));
+//			}
+//			System.out.println("All have been selected!");
+//			return arrayList;
+//
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//		return null;
+//	}
+
+	public static Kirja get_kirja(int kirja_id) throws Exception {
 		try {
 			Connection connection = getConnection();
-			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN";
+			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN WHERE kirja_id = "+kirja_id+"";
 			PreparedStatement getData = connection.prepareStatement(query);
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<Kirja> arrayList = new ArrayList<Kirja>(); // no need for it if you don't store the data
+				
+				resultSet.next();
+				System.out.println("\n" + "kirja_id: " + resultSet.getInt("kirja_id"));
+				System.out.println("tila: " + resultSet.getString("tila"));
+				System.out.println("luokka: " + resultSet.getString("luokka"));
+				System.out.println("kirja_ISBN: " + resultSet.getString("kirja_ISBN"));
+				System.out.println("kirjasto_id: " + resultSet.getInt("kirjasto_id"));
+				System.out.println("lainaaja: " + resultSet.getInt("lainaaja") + "\n");
 
-			while (resultSet.next()) {
-				
-				System.out.println("--Kirja--- kirja_id: " + resultSet.getInt("kirja_id"));
-				System.out.println("---Kirjan_tiedot--- nimi: " + resultSet.getString("nimi") + "\n");
-				
-				arrayList.add(new Kirja(resultSet.getInt("kirja_id"),
-						resultSet.getString("tila"),
-						resultSet.getString("luokka"),
-						resultSet.getLong("kirja_ISBN"),
-						resultSet.getInt("kirjasto_id"),
-						new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
-								resultSet.getString("nimi")
-								,resultSet.getString("kustantaja"),
-								resultSet.getString("kirjoittajat")
-								,resultSet.getString("kuva"),
-								resultSet.getInt("julkaisuvuosi"),
-								resultSet.getInt("sivumäärä"))));
-			}
 			System.out.println("All have been selected!");
-			// System.out.println("arraylist: " + arrayList.get(1));
-			return arrayList;
+			
+			return new Kirja(resultSet.getInt("kirja_id"),
+					resultSet.getString("tila"),
+					resultSet.getString("luokka"),
+					resultSet.getLong("kirja_ISBN"),
+					resultSet.getInt("kirjasto_id"),
+					new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+							resultSet.getString("nimi")
+							,resultSet.getString("kustantaja"),
+							resultSet.getString("kirjoittajat")
+							,resultSet.getString("kuva"),
+							resultSet.getInt("julkaisuvuosi"),
+							resultSet.getInt("sivumäärä")));
 
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return null;
 	}
-
 	
 	public static void post_asiakas(Asiakas asiakas) throws Exception {
 
 		try {
 			Connection connection = getConnection();
 			PreparedStatement posted = connection.prepareStatement(
-					"insert into asiakas " + " (etunimi, sukunimi, kirja_id, tiedot_id)" + " values ('" + asiakas.getEtunimi()
-							+ "', '" + asiakas.getSukunimi() + "', '" + asiakas.getKirja_id() + "', '" + asiakas.getTiedot_id() + "')"); 
+					"insert into asiakas " + " (etunimi, sukunimi, puhelinnum)" + " values ('" + asiakas.getEtunimi()
+							+ "', '" + asiakas.getSukunimi() + "', '" + asiakas.getPuhelinnum() + "')"); 
 			posted.executeUpdate(); // to add the data to the database
 
 		} catch (Exception e) {
@@ -276,42 +252,32 @@ public class Tietokanta {
 
 	}
 
-	public static ArrayList<String> get_asiakas() throws Exception { //yksi asiakas + parametri
+	public static Asiakas get_asiakas(int as_id) throws Exception { //yksi asiakas + parametri
+		
 		try {
 			Connection connection = getConnection();
-			PreparedStatement getData = connection.prepareStatement("SELECT * FROM asiakas");	//where																// too
+			String query = "SELECT * FROM asiakas INNER JOIN asiakas_tiedot ON asiakas.puhelinnum=asiakas_tiedot.puh_numero WHERE as_id = "+as_id+" ";
+			//String query = "SELECT * FROM (asiakas WHERE as_id = "+as_id+") CROSS JOIN  ( asiakas INNER JOIN asiakas_tiedot ON asiakas.puhelinnum=asiakas_tiedot.puh_numero)";
+			//String query1 = "SELECT * FROM asiakas WHERE as_id = "+as_id+"";
+			PreparedStatement getData = connection.prepareStatement(query);															
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<String> arrayList = new ArrayList<String>();
-
 			
-			while (resultSet.next()) {
-				
+				resultSet.next();				
 				System.out.print("as_id: " + resultSet.getInt("as_id") + ", ");
 				System.out.print("etunimi: " + resultSet.getString("etunimi") + ", ");
 				System.out.print("sukunimi: " + resultSet.getString("sukunimi") + ", ");
-				System.out.print("kirja_id: " + resultSet.getInt("kirja_id") + ", ");
-				System.out.print("tiedot_id: " + resultSet.getInt("tiedot_id") + "\n");
-				
-				etunimi = resultSet.getString("etunimi");
-				sukunimi = resultSet.getString("sukunimi");
-//				kirja_id = resultSet.getInt("kirja_id"); // what if we use kirja_id value without a sign to new value
-//				tiedot_id = resultSet.getInt("tiedot_id");  // what if we use tiedot_id value without a sign to new value
-				
-				asiakas.setEtunimi(etunimi);
-				asiakas.setSukunimi(sukunimi);
-				//asiakas.setKirja_id(kirja_id);
-				asiakas.setTiedot_id(tiedot_id);
-				
-				arrayList.add(resultSet.getString("as_id")); // we add the as_id to the arrayList
-				arrayList.add(resultSet.getString("etunimi"));
-				arrayList.add(resultSet.getString("sukunimi"));
-				arrayList.add(resultSet.getString("kirja_id"));
-				arrayList.add(resultSet.getString("tiedot_id"));
+				System.out.print("puhelinnum: " + resultSet.getString("puhelinnum") + "\n");
 
-			}
 			System.out.println("All have been selected!");
-			//System.out.println("arraylist: " + arrayList.get(0));
-			return arrayList;
+
+			return new Asiakas(resultSet.getInt("as_id"),
+					resultSet.getString("etunimi"), 
+					resultSet.getString("sukunimi"), 
+					new Asiakastiedot(resultSet.getString("kaupunki"),
+							resultSet.getString("s_posti"), 
+							resultSet.getString("posti_numero"), 
+							resultSet.getString("osoite"),
+							resultSet.getString("puh_numero")));
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -338,35 +304,20 @@ public class Tietokanta {
 
 	}
 
-	public static ArrayList<Admin> get_admin() throws Exception { /// yksi admin
+	public static Admin get_admin(int kirjasto_id) throws Exception { /// yksi admin
 		try {
 
 			Connection connection = getConnection();
-			PreparedStatement getData = connection.prepareStatement("SELECT * FROM admin");																
+			PreparedStatement getData = connection.prepareStatement("SELECT * FROM admin WHERE kirjasto_id = "+kirjasto_id+"");																
 			ResultSet resultSet = getData.executeQuery();
-			ArrayList<Admin> arrayList = new ArrayList<Admin>(); // no need for it if you don't store the data
-
-			while (resultSet.next()) {
-
-				// print out to the console all the data form the database
-				//System.out.print("Käyttäjätunnus: " + resultSet.getString("Käyttäjätunnus") + ", ");
-				//System.out.print("salasana: " + resultSet.getString("salasana") + ", ");
-				//System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + "\n");
-
-				Käyttäjätunnus = resultSet.getString("Käyttäjätunnus");
-				salasana = resultSet.getString("salasana");
-				kirjasto_id = resultSet.getInt("kirjasto_id"); // what if we use kirjasto_id value without a sign to new value
 				
+				resultSet.next();
+				System.out.print("Käyttäjätunnus: " + resultSet.getString("Käyttäjätunnus") + ", ");
+				System.out.print("salasana: " + resultSet.getString("salasana") + ", ");
+				System.out.print("kirjasto_id: " + resultSet.getInt("kirjasto_id") + "\n");
 
-				arrayList.add(new Admin(Käyttäjätunnus,salasana,kirjasto_id));
-
-				
-			}
-			;
 			System.out.println("All have been selected!");
-			//System.out.println("arraylist: " + arrayList.get(0));
-			//System.out.println("arraylist: " + arrayList.get(1));
-			return arrayList;
+			return new Admin( resultSet.getString("Käyttäjätunnus"),resultSet.getString("salasana"),resultSet.getInt("kirjasto_id"));
 
 		} catch (Exception e) {
 			System.out.println(e);

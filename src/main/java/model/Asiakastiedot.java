@@ -2,32 +2,22 @@ package model;
 
 public class Asiakastiedot extends Asiakas {
 
-	private int tiedot_id;
 	private String kaupunki;
 	private String s_posti;
-	private int posti_numero;
+	private String posti_numero;
 	private String osoite;
-	private int puh_numero;
-	
+	private String puh_numero;
+
 	public Asiakastiedot() {
-		
+
 	}
 
-	public Asiakastiedot(int tiedot_id, String kaupunki, String s_posti, int posti_numero, String osoite, int puh_numero) {
-		this.tiedot_id = tiedot_id;
+	public Asiakastiedot(String kaupunki, String s_posti, String posti_numero, String osoite, String puh_numero) {
 		this.kaupunki = kaupunki;
 		this.s_posti = s_posti;
 		this.posti_numero = posti_numero;
 		this.osoite = osoite;
 		this.puh_numero = puh_numero;
-	}
-	
-	public int getTiedot_id() {
-		return tiedot_id;
-	}
-
-	public void setTiedot_id(int tiedot_id) {
-		this.tiedot_id = tiedot_id;
 	}
 
 	public String getKaupunki() {
@@ -46,14 +36,6 @@ public class Asiakastiedot extends Asiakas {
 		this.s_posti = s_posti;
 	}
 
-	public int getPosti_numero() {
-		return posti_numero;
-	}
-
-	public void setPosti_numero(int posti_numero) {
-		this.posti_numero = posti_numero;
-	}
-
 	public String getOsoite() {
 		return osoite;
 	}
@@ -62,11 +44,19 @@ public class Asiakastiedot extends Asiakas {
 		this.osoite = osoite;
 	}
 
-	public int getPuh_numero() {
+	public String getPosti_numero() {
+		return posti_numero;
+	}
+
+	public void setPosti_numero(String posti_numero) {
+		this.posti_numero = posti_numero;
+	}
+
+	public String getPuh_numero() {
 		return puh_numero;
 	}
 
-	public void setPuh_numero(int puh_numero) {
+	public void setPuh_numero(String puh_numero) {
 		this.puh_numero = puh_numero;
 	}
 
