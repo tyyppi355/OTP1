@@ -80,8 +80,8 @@ public class Tietokanta {
 			
 			//String driver = "jdbc:mariadb"; // the new one is com.mysql.cj.jdbc.Driver
 			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk"; // add the port and the name of the database
-			String username = ""; // your database name
-			String password = ""; // your database password
+			String username = "rikukosk"; // your database name
+			String password = "Mustekala1337"; // your database password
 			
 			Connection connection = DriverManager.getConnection(url,username,password);
 			

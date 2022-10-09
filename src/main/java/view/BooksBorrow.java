@@ -1,12 +1,9 @@
 package view;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -22,7 +19,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,8 +31,7 @@ import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
 
-public class KirjantiedotController extends EngineUI implements Initializable{
-	
+public class BooksBorrow {
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
 		
@@ -46,7 +41,7 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 	private String sql = "SELECT FROM kirjan_tiedot WHERE id = ?";
 	
 	
-	public KirjantiedotController() {
+	public BooksBorrow() {
 		
 	}
 	@FXML	private TableView<Kirjatiedot> tableview;
@@ -163,5 +158,34 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 				e.printStackTrace();
 			}
 	    }
+	   
+	   @FXML	private void btnPeruuttaa(ActionEvent event) throws IOException {
+		   changeScene();
+	    }
+	   public void changeScene() throws IOException {
+	    	
+	    	try {
+				FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+		        Scene scene = new Scene(fxmlLoader.load()); // scene
+
+		        Stage stage = EngineUI.getPrimaryStage();
+		        stage.hide();
+		        stage.setTitle("Kirjaston lainausjärjestelmä ");
+		        stage.setScene(scene);
+		        stage.show();		
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	        /*Stage stage = (Stage) peruuttaa.getScene().getWindow();
+	        root = FXMLLoader.load(getClass().getResource("Kirjatiedot.fxml"));
+	        Scene scene = new Scene(root);
+	        stage.setOpacity(1);
+	        stage.setScene(scene);
+	        stage.close();*/
+			       
+	    }
+		
 }
 

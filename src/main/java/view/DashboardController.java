@@ -77,7 +77,7 @@ public class DashboardController extends EngineUI implements Initializable{
 			Stage primaryStage = new Stage();
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-			primaryStage.setTitle("BookBeast");
+			primaryStage.setTitle("Kirjaston lainausjärjestelmä ");
 			primaryStage.show();
 
 	    }
@@ -89,7 +89,7 @@ public class DashboardController extends EngineUI implements Initializable{
 
 	        Stage stage = getPrimaryStage();
 	        stage.hide();
-	        stage.setTitle("Book Beast");
+	        stage.setTitle("Kirjaston lainausjärjestelmä ");
 	        stage.setScene(scene);
 	        stage.show();
 	    }

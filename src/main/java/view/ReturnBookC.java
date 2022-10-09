@@ -1,12 +1,9 @@
 package view;
 
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -22,7 +19,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,7 +31,7 @@ import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
 
-public class KirjantiedotController extends EngineUI implements Initializable{
+public class ReturnBookC {
 	
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
@@ -46,7 +42,7 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 	private String sql = "SELECT FROM kirjan_tiedot WHERE id = ?";
 	
 	
-	public KirjantiedotController() {
+	public ReturnBookC() {
 		
 	}
 	@FXML	private TableView<Kirjatiedot> tableview;
@@ -103,19 +99,7 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 			 tableview.getItems().remove(selectedID);
 		 }
 	 }
-	 @FXML void addItem(ActionEvent event) {
-			 Kirjatiedot kt = postcontroller.kirjaTiedotPost(Long.parseLong(ISBN.getText().toString()));
-			 
-			 tableview.getItems().add(kt);
 
-		 
-	  }
-	  /*ObservableList<Kirjatiedot> data = FXCollections.observableArrayList(
-			  new Kirjatiedot(1, "Java", "Oracle", "Oracle CO", "Java language", 2000, 300),
-			  new Kirjatiedot(1, "JavaFX", "Oracle", "Oracle CO", "JavaFX language", 2000, 300)
-		);*/
-	 
-	
 	
 	    public void initialize(URL url, ResourceBundle rb) {UpdateTable();}
 	    
@@ -141,27 +125,34 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 				tableview.setItems(data);	    	
 	    }
 	    
-	    @FXML	void btnClose(ActionEvent event) throws IOException {
-	    	// get a handle to the stage
-	        Stage stage = (Stage) btnClose.getScene().getWindow();
-	        // do what you have to do
-	        stage.close();
+	   @FXML	private void returnBook(ActionEvent event) {
+		   	
 	    }
+	   @FXML	private void btnPeruuttaa(ActionEvent event) throws IOException {
+	    	
+	    	changeScene();
+	    	/*	Stage stage = (Stage) peruuttaa.getScene().getWindow();
+	    		stage.close();*/
+	    }
+
 	    
-	   public void createBook(ActionEvent event) throws IOException {
-		   try {
-				FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"));
+	    public void changeScene() throws IOException {
+	    	
+	    	try {
+				FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
 		        Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		        Stage stage = EngineUI.getPrimaryStage();
 		        stage.hide();
-		        stage.setTitle("Kirjaston lainausjärjestelmä!");
+		        stage.setTitle("Kirjaston lainausjärjestelmä ");
 		        stage.setScene(scene);
 		        stage.show();		
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	    				       
 	    }
+		
 }
 
