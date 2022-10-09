@@ -32,17 +32,15 @@ public class AdminController{
 
     @FXML void AllBooks(ActionEvent event) {
  
-    	Stage primaryStage = new Stage();
-        Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("Kirjatiedot.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Kirjatiedot.fxml"));
+	        Scene scene = new Scene(fxmlLoader.load()); // scene
 
-	        Scene scene = new Scene(root);
-	        primaryStage.initModality(Modality.APPLICATION_MODAL);
-	        primaryStage.initStyle(StageStyle.UNIFIED);
-	        primaryStage.setOpacity(1);
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
+	        Stage stage = EngineUI.getPrimaryStage();
+	        stage.hide();
+	        stage.setTitle("Kirjaston lainausjärjestelmä ");
+	        stage.setScene(scene);
+	        stage.show();		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

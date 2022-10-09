@@ -45,6 +45,11 @@ public class ReturnBookC {
 	public ReturnBookC() {
 		
 	}
+	
+    @FXML	private TextField kirjaID;
+    
+    
+   //TableView 
 	@FXML	private TableView<Kirjatiedot> tableview;
 	@FXML	private TableColumn<Kirjatiedot, String> julkasuvuosi;
     @FXML	private TableColumn<Kirjatiedot, Long> kirja_ISBN;

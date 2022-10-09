@@ -27,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
@@ -44,6 +45,13 @@ public class BooksBorrow {
 	public BooksBorrow() {
 		
 	}
+	
+	//TextFields
+	 @FXML	private TextField asiakasID;
+	 @FXML  private TextField kirjaID;
+	 @FXML	private Text asiakasTiedot;
+	 
+	//Tableview
 	@FXML	private TableView<Kirjatiedot> tableview;
 	@FXML	private TableColumn<Kirjatiedot, String> julkasuvuosi;
     @FXML	private TableColumn<Kirjatiedot, Long> kirja_ISBN;

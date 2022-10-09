@@ -11,9 +11,9 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="1142.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.KirjantiedotController">
    <children>
       <TextField fx:id="ISBN" layoutX="34.0" layoutY="92.0" prefHeight="35.0" prefWidth="256.0" promptText="ISBN" />
-      <TextField layoutX="34.0" layoutY="132.0" prefHeight="35.0" prefWidth="256.0" promptText="Tila" />
-      <TextField layoutX="34.0" layoutY="172.0" prefHeight="35.0" prefWidth="256.0" promptText="Luokka" />
-      <TextField layoutX="34.0" layoutY="212.0" prefHeight="35.0" prefWidth="256.0" promptText="Kirjasto Id" />
+      <TextField fx:id="kirjTila" layoutX="34.0" layoutY="132.0" prefHeight="35.0" prefWidth="256.0" promptText="Tila" />
+      <TextField fx:id="kirjaLuokka" layoutX="34.0" layoutY="172.0" prefHeight="35.0" prefWidth="256.0" promptText="Luokka" />
+      <TextField fx:id="kirjastoID" layoutX="34.0" layoutY="212.0" prefHeight="35.0" prefWidth="256.0" promptText="Kirjasto Id" />
       <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lisää uusi kirja">
          <font>
             <Font name="Modern No. 20" size="26.0" />
@@ -31,23 +31,23 @@
             <TableColumn fx:id="erapaiva" prefWidth="78.0" text="Eräpäivä" />
         </columns>
       </TableView>
-      <Button fx:id="update" layoutX="947.0" layoutY="384.0" mnemonicParsing="false" onAction="#UpdateTable" prefHeight="35.0" prefWidth="84.0" text="Update">
+      <Button fx:id="update" layoutX="947.0" layoutY="384.0" mnemonicParsing="false" onAction="#UpdateTable" prefHeight="35.0" prefWidth="84.0" text="Päivitä">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="delete" layoutX="1038.0" layoutY="384.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="35.0" prefWidth="76.0" text="Delete">
+      <Button fx:id="delete" layoutX="1038.0" layoutY="384.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="35.0" prefWidth="76.0" text="Poistaa">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="addBook" layoutX="84.0" layoutY="352.0" mnemonicParsing="false" onAction="#addItem" prefHeight="35.0" prefWidth="122.0" text="Add book">
+      <Button fx:id="addBook" layoutX="84.0" layoutY="352.0" mnemonicParsing="false" onAction="#addItem" prefHeight="35.0" prefWidth="122.0" text="Lisää kirja">
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Button fx:id="btnClose" layoutX="84.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="122.0" text="Cancel">
+      <Button fx:id="btnClose" layoutX="84.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="122.0" text="Peruuttaa">
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Button fx:id="createBook" layoutX="826.0" layoutY="386.0" mnemonicParsing="false" onAction="#createBook" prefHeight="35.0" text="Create a book">
+      <Button fx:id="createBook" layoutX="826.0" layoutY="386.0" mnemonicParsing="false" onAction="#createBook" prefHeight="35.0" text="Luoda Kirja">
          <font>
             <Font size="15.0" />
          </font></Button>

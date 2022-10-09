@@ -15,9 +15,15 @@ import javafx.stage.Stage;
 public class CreateUser {
 
 	
+    @FXML	private TextField luoEtunimi;
+    @FXML	private TextField luoKaupunki;
+    @FXML	private TextField luoOsoite;
+    @FXML	private TextField luoPNumero;
+    @FXML	private TextField luoPuheNumero;
+    @FXML	private TextField luoSPosti;
+    @FXML	private TextField luoSukunimi;
+
 	  	@FXML	private Button luoBtn;
-	    @FXML	private TextField luoEtunimi;
-	    @FXML	private TextField luoSukunimi;
 	    @FXML	private Button peruuttaa;
 	    @FXML	private void luoKayttajaa(ActionEvent event) throws IOException {
 	    	String etunimi = luoEtunimi.getText();

@@ -49,6 +49,14 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 	public KirjantiedotController() {
 		
 	}
+	
+	//TextFields
+	@FXML	private TextField ISBN;
+	@FXML	private TextField kirjTila;
+	@FXML	private TextField kirjaLuokka;
+    @FXML	private TextField kirjastoID;
+	
+	
 	@FXML	private TableView<Kirjatiedot> tableview;
 	@FXML	private TableColumn<Kirjatiedot, String> julkasuvuosi;
     @FXML	private TableColumn<Kirjatiedot, Long> kirja_ISBN;
@@ -66,7 +74,6 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 	 @FXML	private Button edit;
 	 @FXML	private Button addBook;    
 	 @FXML	private Button createBook;
-	 @FXML  private TextField ISBN;
 	 
 
 	 Connection connection;
