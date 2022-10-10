@@ -2,7 +2,6 @@ package view;
 
 import java.io.IOException;  
 
-import application.Controller;
 import application.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

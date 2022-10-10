@@ -62,9 +62,9 @@ public class AsiakastiedotController implements Initializable {
     }
     @FXML	void addUser(ActionEvent event) {
     	//Asiakastiedot asTiedot = new Asiakastiedot(1, "kaupunki", "Posti", 20, "osoite", 300);
-    	Asiakas asList = new Asiakas("Etunimi", "Sukunimi", 122, 123);
+    	//Asiakas asList = new Asiakas("Etunimi", "Sukunimi", 122, 123);
 		// tableview.getItems().add(asTiedot);
-		 tableview.getItems().add(asList);
+		 //tableview.getItems().add(asList);
 		 
     }
 

@@ -107,9 +107,7 @@ public class BooksBorrow {
 		 }
 	 }
 	 @FXML void addItem(ActionEvent event) {
-			 Kirjatiedot kt = postcontroller.kirjaTiedotPost(Long.parseLong(ISBN.getText().toString()));
-			 
-			 tableview.getItems().add(kt);
+		 Kirja k = postcontroller.lainaaPost(asiakasID.getText(), kirjaID.getText());
 
 		 
 	  }
@@ -118,9 +116,8 @@ public class BooksBorrow {
 			  new Kirjatiedot(1, "JavaFX", "Oracle", "Oracle CO", "JavaFX language", 2000, 300)
 		);*/
 	 
-	
-	
-	    public void initialize(URL url, ResourceBundle rb) {UpdateTable();}
+	 
+	 @FXML  public void initialize(URL url, ResourceBundle rb) {UpdateTable();}
 	    
 	    public void UpdateTable() {
 	    	this.data = FXCollections.observableArrayList() ;
@@ -194,6 +191,15 @@ public class BooksBorrow {
 	        stage.close();*/
 			       
 	    }
+	   
+	   @FXML	void addbook(ActionEvent event) throws IOException {
+		   
+		   Kirja k = postcontroller.lainaaPost(asiakasID.getText(), kirjaID.getText());
+		   tableview.getItems().add(k.getkTiedot());
+		   
+	    }
+	   
+	   
 		
 }
 

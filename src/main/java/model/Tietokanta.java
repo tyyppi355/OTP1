@@ -18,19 +18,22 @@ public class Tietokanta {
 
 		// post_kirjan_tiedot();
 		 //get_kirjan_tiedot();
-
+		
+		//palautus("4","29");
+		
 		// post_kirjasto();
 		// get_kirjasto(2);
 
-		// post_kirja();
+		//post_kirja(new Kirja("matkalla","1.7",547559259,2));
 		//   get_kirja(1);
-		
+		//Kirjatiedot kor = get_Kirjatiedot(5345345);
+		//System.out.println(kor.getNimi());
 //		ArrayList<Kirja> kirjat = get_kirjat();
 //		System.out.println(kirjat.get(0).getkTiedot().getNimi() + " " + kirjat.get(0).getKirja_ISBN());
 //		System.out.println(kirjat.get(1).getkTiedot().getNimi() + " " + kirjat.get(1).getKirja_ISBN());
 
 		// post_asiakas();
-		 get_asiakas(5);
+		// get_asiakas(5);
 		 
 		//post_admin();
 		// get_admin(4);
@@ -151,8 +154,9 @@ public class Tietokanta {
 
 		try {
 			Connection connection = getConnection();
+			System.out.println(kirja.getKirja_ISBN() + "===Tämä");
 			PreparedStatement posted = connection.prepareStatement("insert into kirja "
-					+ " (kirja_id, tila, luokka, kirja_ISBN, kirjasto_id)" + " values ('" + kirja.getKirja_id() + "', '" + kirja.getTila()
+					+ " (tila, luokka, kirja_ISBN, kirjasto_id)" + " values ('" + kirja.getTila()
 					+ "', '" + kirja.getLuokka() + "', '" + kirja.getKirja_ISBN() + "', '" + kirja.getKirjasto_id() + "')"); 
 			posted.executeUpdate(); // to add the data to the database
 
@@ -163,41 +167,46 @@ public class Tietokanta {
 		}
 
 	}
+	
+	/**
+	 * Tässä tekstiä
+	 * @return Kirja listan
+	 * @throws Exception
+	 */
+	public static ArrayList<Kirja> get_kirjat() throws Exception {
+		try {
+			Connection connection = getConnection();
+			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN";
+		PreparedStatement getData = connection.prepareStatement(query);
+			ResultSet resultSet = getData.executeQuery();
+			ArrayList<Kirja> arrayList = new ArrayList<Kirja>();
 
-//	public static ArrayList<Kirja> get_kirjat() throws Exception {
-//		try {
-//			Connection connection = getConnection();
-//			String query = "SELECT * FROM kirja INNER JOIN kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN";
-//			PreparedStatement getData = connection.prepareStatement(query);
-//			ResultSet resultSet = getData.executeQuery();
-//			ArrayList<Kirja> arrayList = new ArrayList<Kirja>();
-//
-//			while (resultSet.next()) {
-//				
-//				System.out.println("--Kirja--- kirja_id: " + resultSet.getInt("kirja_id"));
-//				System.out.println("---Kirjan_tiedot--- nimi: " + resultSet.getString("nimi") + "\n");
-//				
-//				arrayList.add(new Kirja(resultSet.getInt("kirja_id"),
-//						resultSet.getString("tila"),
-//						resultSet.getString("luokka"),
-//						resultSet.getLong("kirja_ISBN"),
-//						resultSet.getInt("kirjasto_id"),
-//						new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
-//								resultSet.getString("nimi")
-//								,resultSet.getString("kustantaja"),
-//								resultSet.getString("kirjoittajat")
-//								,resultSet.getString("kuva"),
-//								resultSet.getInt("julkaisuvuosi"),
-//								resultSet.getInt("sivumäärä"))));
-//			}
-//			System.out.println("All have been selected!");
-//			return arrayList;
-//
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//		return null;
-//	}
+			while (resultSet.next()) {
+				
+				System.out.println("--Kirja--- kirja_id: " + resultSet.getInt("kirja_id"));
+				System.out.println("---Kirjan_tiedot--- nimi: " + resultSet.getString("nimi") + "\n");
+				
+				arrayList.add(new Kirja(resultSet.getInt("kirja_id"),
+						resultSet.getString("tila"),
+						resultSet.getString("luokka"),
+					resultSet.getLong("kirja_ISBN"),
+					resultSet.getInt("kirjasto_id"),
+						new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+							resultSet.getString("nimi")
+							,resultSet.getString("kustantaja"),
+								resultSet.getString("kirjoittajat")
+							,resultSet.getString("kuva"),
+							resultSet.getInt("julkaisuvuosi"),
+							resultSet.getInt("sivumäärä"))));
+			}
+			System.out.println("All have been selected!");
+			return arrayList;
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 
 	public static Kirja get_kirja(int kirja_id) throws Exception {
 		try {
@@ -323,6 +332,106 @@ public class Tietokanta {
 			System.out.println(e);
 		}
 		return null;
+	}
+	public static Kirjatiedot get_Kirjatiedot(long isbn) throws Exception { /// yksi admin
+		try {
+
+			Connection connection = getConnection();
+			PreparedStatement getData = connection.prepareStatement("SELECT * FROM kirjan_tiedot WHERE kirja_ISBN = " + isbn + "");																
+			ResultSet resultSet = getData.executeQuery();
+				
+				resultSet.next();
+
+			System.out.println("All have been selected!");
+			return new Kirjatiedot(resultSet.getLong("kirja_ISBN"),resultSet.getString("nimi"),resultSet.getString("kustantaja")
+					,resultSet.getString("kirjoittajat"),resultSet.getString("kuva"),resultSet.getInt("julkaisuvuosi"),resultSet.getInt("sivumäärä"));
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	public static Kirja lainaus(String asiakas_id,String kirja_id) throws Exception { /// yksi admin
+		try {
+
+			Connection connection = getConnection();
+			PreparedStatement getData = connection.prepareStatement("UPDATE `rikukosk`.`kirja` SET `lainaaja`='"
+			+ asiakas_id + "' WHERE  `kirja_id`=" + kirja_id + ";");																
+			getData.executeUpdate();
+			//getData = connection.prepareStatement("SELECT * FROM kirja WHERE kirja_id = " + kirja_id + "");
+			getData = connection.prepareStatement("SELECT * FROM kirja INNER JOIN"
+					+ " kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN WHERE kirja_id = "+kirja_id+"");
+			ResultSet resultSet = getData.executeQuery();
+			
+			resultSet.next();
+			System.out.println("\n" + "kirja_id: " + resultSet.getInt("kirja_id"));
+			System.out.println("tila: " + resultSet.getString("tila"));
+			System.out.println("luokka: " + resultSet.getString("luokka"));
+			System.out.println("kirja_ISBN: " + resultSet.getString("kirja_ISBN"));
+			System.out.println("kirjasto_id: " + resultSet.getInt("kirjasto_id"));
+			System.out.println("lainaaja: " + resultSet.getInt("lainaaja") + "\n");
+			
+			return new Kirja(resultSet.getInt("kirja_id"),
+					resultSet.getString("tila"),
+					resultSet.getString("luokka"),
+					resultSet.getLong("kirja_ISBN"),
+					resultSet.getInt("kirjasto_id"),
+					new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+							resultSet.getString("nimi")
+							,resultSet.getString("kustantaja"),
+							resultSet.getString("kirjoittajat")
+							,resultSet.getString("kuva"),
+							resultSet.getInt("julkaisuvuosi"),
+							resultSet.getInt("sivumäärä")));
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+		
+
+
+	}
+	
+	public static Kirja palautus(String kirja_id) throws Exception { /// yksi admin
+		try {
+
+			Connection connection = getConnection();
+			PreparedStatement getData = connection.prepareStatement("UPDATE `rikukosk`.`kirja` SET `lainaaja`=NULL WHERE  `kirja_id`=" + kirja_id + ";");																
+			getData.executeUpdate();
+			//getData = connection.prepareStatement("SELECT * FROM kirja WHERE kirja_id = " + kirja_id + "");
+			getData = connection.prepareStatement("SELECT * FROM kirja INNER JOIN"
+					+ " kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN WHERE kirja_id = "+kirja_id+"");
+			ResultSet resultSet = getData.executeQuery();
+			
+			resultSet.next();
+			System.out.println("\n" + "kirja_id: " + resultSet.getInt("kirja_id"));
+			System.out.println("tila: " + resultSet.getString("tila"));
+			System.out.println("luokka: " + resultSet.getString("luokka"));
+			System.out.println("kirja_ISBN: " + resultSet.getString("kirja_ISBN"));
+			System.out.println("kirjasto_id: " + resultSet.getInt("kirjasto_id"));
+			System.out.println("lainaaja: " + resultSet.getInt("lainaaja") + "\n");
+			
+			return new Kirja(resultSet.getInt("kirja_id"),
+					resultSet.getString("tila"),
+					resultSet.getString("luokka"),
+					resultSet.getLong("kirja_ISBN"),
+					resultSet.getInt("kirjasto_id"),
+					new Kirjatiedot(resultSet.getLong("kirja_ISBN"),
+							resultSet.getString("nimi")
+							,resultSet.getString("kustantaja"),
+							resultSet.getString("kirjoittajat")
+							,resultSet.getString("kuva"),
+							resultSet.getInt("julkaisuvuosi"),
+							resultSet.getInt("sivumäärä")));
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+		
+
+
 	}
 
 	

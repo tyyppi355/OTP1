@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import controller.Controller;
+import controller.V2M;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Asiakas;
+import model.Asiakastiedot;
 
 public class CreateUser {
-
+	
+	V2M postcontroller = new Controller();
 	
     @FXML	private TextField luoEtunimi;
     @FXML	private TextField luoKaupunki;
@@ -34,12 +39,10 @@ public class CreateUser {
 	    			JOptionPane.showMessageDialog(null, "Please fill the data!");
 	    			return;
 	    		}
-
-	    	String query ="INSERT INTO kirjan_tiedot (kirja_ISBN, nimi, kustantaja, kirjoittajat, kuva, julkaisuvuosi, sivumäärä) VALUES ("+
-	    					"'" + etunimi + "', '" + sukunimi + "', '"
-	    					+"')";
-	    	System.out.println(query);
-	    	//TODO add into database:
+	    	
+	    	postcontroller.addAsiakas(new Asiakas(luoEtunimi.getText(),luoSukunimi.getText(),luoPuheNumero.getText()
+	    			,new Asiakastiedot(luoKaupunki.getText(),luoSPosti.getText(),luoPNumero.getText(),luoOsoite.getText(),luoPuheNumero.getText())));
+	    	
 	    	JOptionPane.showMessageDialog(null, "New User is added!");
 	    	
 	    	

@@ -19,9 +19,8 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
-import application.Controller;
 import application.Main;
+import controller.Controller;
 
 import java.net.URL;
 
@@ -84,7 +83,7 @@ public class DashboardController extends EngineUI implements Initializable{
 	
 	    public static void changeScene() throws IOException {
 
-	        FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));
+	        FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));  ///bug
 	        Scene scene = new Scene(fxmlLoader.load()); // scene
 
 	        Stage stage = getPrimaryStage();

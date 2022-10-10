@@ -19,16 +19,17 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import application.Controller;
 import application.Main;
-
-
+import controller.Controller;
+import controller.V2M;
 import application.Main;
 
 public class LogInController extends Main {
 	
 	private String inputNullError = "Please enter your data.";
 	private String inputWrongError = "Wrong username or password";
+	
+	V2M postController = new Controller();
 
 	public LogInController() {
 
@@ -61,8 +62,7 @@ public class LogInController extends Main {
 				// tietokanta.admin.getKäyttäjätunnu() // and this also work
 				// tietokanta.admin.getSalasana() // and this also work
 				
-				if (username.getText().toString().equals(tietokanta.get_admin(1).getKäyttäjätunnu())
-						&& password.getText().toString().equals(tietokanta.get_admin(1).getSalasana())) {
+				if (postController.tarkistaLogin(username.getText(), password.getText())) {
 						
 					error.setText("Success!");
 					

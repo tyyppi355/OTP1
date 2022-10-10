@@ -131,6 +131,8 @@ public class ReturnBookC {
 	    }
 	    
 	   @FXML	private void returnBook(ActionEvent event) {
+		   
+		   Kirja k = postcontroller.palautusPost(kirjaID.getText());
 		   	
 	    }
 	   @FXML	private void btnPeruuttaa(ActionEvent event) throws IOException {

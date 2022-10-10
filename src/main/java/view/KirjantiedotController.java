@@ -111,9 +111,11 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 		 }
 	 }
 	 @FXML void addItem(ActionEvent event) {
-			 Kirjatiedot kt = postcontroller.kirjaTiedotPost(Long.parseLong(ISBN.getText().toString()));
-			 
-			 tableview.getItems().add(kt);
+		 Kirja k = new Kirja(kirjTila.getText(),kirjaLuokka.getText(),Long.parseLong(ISBN.getText()),Integer.parseInt(kirjastoID.getText()));
+			 k = postcontroller.kirjaPost(k);
+			 if (k.getkTiedot() != null) {
+				 tableview.getItems().add(k.getkTiedot());
+			 }
 
 		 
 	  }

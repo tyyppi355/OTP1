@@ -23,6 +23,12 @@ public class Asiakas {
 	}
 	
 	// post
+	public Asiakas(String etunimi, String sukunimi, String puhelinnum,Asiakastiedot asiakastiedot) { // new
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puhelinnum = puhelinnum;
+		this.asiakastiedot = asiakastiedot;
+	}
 	public Asiakas(String etunimi, String sukunimi, String puhelinnum) { // new
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
