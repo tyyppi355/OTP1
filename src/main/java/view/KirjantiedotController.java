@@ -152,9 +152,14 @@ public class KirjantiedotController extends EngineUI implements Initializable{
 	    
 	    @FXML	void btnClose(ActionEvent event) throws IOException {
 	    	// get a handle to the stage
-	        Stage stage = (Stage) btnClose.getScene().getWindow();
-	        // do what you have to do
-	        stage.close();
+	    	FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+            Scene scene = new Scene(fxmlLoader.load()); // scene
+
+            Stage stage = EngineUI.getPrimaryStage();
+            stage.hide();
+            stage.setTitle("Kirjaston lainausjärjestelmä!");
+            stage.setScene(scene);
+            stage.show();
 	    }
 	    
 	   public void createBook(ActionEvent event) throws IOException {
