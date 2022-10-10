@@ -40,8 +40,11 @@ public class Rajapinta {
 		
 		long isbn = Long.parseLong(Data.docs.get(0).isbn.get(0));
 		String nimi = Data.docs.get(0).title;
+		nimi = nimi.replaceAll("[^a-zA-Z0-9]", " ");
 		String kustantaja = Data.docs.get(0).publisher.get(0);
+		kustantaja = kustantaja.replaceAll("[^a-zA-Z0-9]", " ");
 		String kirjoittajat = Data.docs.get(0).author_name.get(0);
+		kirjoittajat = kirjoittajat.replaceAll("[^a-zA-Z0-9]", " ");
 		String kuva = Data.docs.get(0).cover_i;
 		int julkaisuvuosi = Data.docs.get(0).first_publish_year;
 		int sivumäärä = Data.docs.get(0).number_of_pages_median;

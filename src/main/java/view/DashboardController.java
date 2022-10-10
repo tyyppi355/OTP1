@@ -83,7 +83,7 @@ public class DashboardController extends EngineUI implements Initializable{
 	
 	    public static void changeScene() throws IOException {
 
-	        FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));  ///bug
+	        FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));
 	        Scene scene = new Scene(fxmlLoader.load()); // scene
 
 	        Stage stage = getPrimaryStage();
