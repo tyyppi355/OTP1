@@ -10,8 +10,8 @@
    <children>
       <TextField fx:id="luoISBN" layoutX="141.0" layoutY="63.0" prefHeight="35.0" prefWidth="280.0" promptText="ISBN" />
       <TextField fx:id="luoNimi" layoutX="141.0" layoutY="108.0" prefHeight="35.0" prefWidth="280.0" promptText="Kirjan nimi" />
-      <TextField fx:id="luoKunstantaja" layoutX="141.0" layoutY="151.0" prefHeight="35.0" prefWidth="280.0" promptText="Kunstantaja" />
-      <TextField fx:id="luoKirjoittajat" layoutX="141.0" layoutY="200.0" prefHeight="35.0" prefWidth="280.0" promptText="Kirjoittajat" />
+      <TextField fx:id="luoKunstantaja" layoutX="141.0" layoutY="151.0" prefHeight="35.0" prefWidth="280.0" promptText="Kuntantaja" />
+      <TextField fx:id="luoKirjoittajat" layoutX="141.0" layoutY="200.0" prefHeight="35.0" prefWidth="280.0" promptText="Kirjoittaja" />
       <TextField fx:id="luoKuvaus" layoutX="141.0" layoutY="245.0" prefHeight="35.0" prefWidth="280.0" promptText="Kuvaus" />
       <TextField fx:id="luoVuosi" layoutX="141.0" layoutY="292.0" prefHeight="35.0" prefWidth="280.0" promptText="Julkasuvuosi" />
       <TextField fx:id="luoSivumaara" layoutX="141.0" layoutY="338.0" prefHeight="35.0" prefWidth="280.0" promptText="Sivumäärä" />
@@ -21,7 +21,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="peruuttaa" layoutX="300.0" layoutY="506.0" mnemonicParsing="false" onAction="#peruuttaa" prefHeight="35.0" prefWidth="150.0" text="Peruuttaa" textFill="#252121">
+      <Button fx:id="peruuttaa" layoutX="300.0" layoutY="506.0" mnemonicParsing="false" onAction="#peruuttaa" prefHeight="35.0" prefWidth="150.0" text="Peruuta" textFill="#252121">
          <font>
             <Font size="19.0" />
          </font>

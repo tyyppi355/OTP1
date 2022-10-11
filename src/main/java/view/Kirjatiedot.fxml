@@ -23,8 +23,8 @@
         <columns>
           <TableColumn fx:id="kirja_ISBN" prefWidth="75.0" text="kirja_ISBN" />
           <TableColumn fx:id="nimi" prefWidth="75.0" text="Nimi" />
-            <TableColumn fx:id="kunstantaja" prefWidth="105.0" text="Kunstantaja" />
-            <TableColumn fx:id="kirjoittajat" prefWidth="126.0" text="Kirjoittajat" />
+            <TableColumn fx:id="kunstantaja" prefWidth="105.0" text="Kustantaja" />
+            <TableColumn fx:id="kirjoittajat" prefWidth="126.0" text="Kirjoittaja" />
             <TableColumn fx:id="kuva" prefWidth="138.0" text="Kuvaus" />
             <TableColumn fx:id="julkasuvuosi" prefWidth="101.0" text="Julkasuvuosi" />
             <TableColumn fx:id="sivumäärä" prefWidth="78.0" text="Sivumäärä" />
@@ -35,7 +35,7 @@
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="delete" layoutX="1038.0" layoutY="384.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="35.0" prefWidth="76.0" text="Poistaa">
+      <Button fx:id="delete" layoutX="1038.0" layoutY="384.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="35.0" prefWidth="76.0" text="Poista">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -43,11 +43,11 @@
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Button fx:id="btnClose" layoutX="84.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="122.0" text="Peruuttaa">
+      <Button fx:id="btnClose" layoutX="84.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="122.0" text="Peruuta">
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Button fx:id="createBook" layoutX="826.0" layoutY="386.0" mnemonicParsing="false" onAction="#createBook" prefHeight="35.0" text="Luoda Kirja">
+      <Button fx:id="createBook" layoutX="826.0" layoutY="386.0" mnemonicParsing="false" onAction="#createBook" prefHeight="35.0" text="Luo Kirja">
          <font>
             <Font size="15.0" />
          </font></Button>

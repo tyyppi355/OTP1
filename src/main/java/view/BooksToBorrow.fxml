@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="1142.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BooksBorrow">
    <children>
-      <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lainaa kirjaa">
+      <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lainaa kirja">
          <font>
             <Font name="Modern No. 20" size="26.0" />
          </font>
@@ -19,7 +19,7 @@
         <columns>
           <TableColumn fx:id="kirja_ISBN" prefWidth="75.0" text="kirja_ISBN" />
           <TableColumn fx:id="nimi" prefWidth="75.0" text="Nimi" />
-            <TableColumn fx:id="kunstantaja" prefWidth="105.0" text="Kunstantaja" />
+            <TableColumn fx:id="kunstantaja" prefWidth="105.0" text="Kustantaja" />
             <TableColumn fx:id="kirjoittajat" prefWidth="126.0" text="Kirjoittajat" />
             <TableColumn fx:id="kuva" prefWidth="138.0" text="Kuvaus" />
             <TableColumn fx:id="julkasuvuosi" prefWidth="101.0" text="Julkasuvuosi" />
@@ -33,14 +33,14 @@
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Button fx:id="btnPeruuttaa" layoutX="95.0" layoutY="393.0" mnemonicParsing="false" onAction="#btnPeruuttaa" prefHeight="35.0" prefWidth="122.0" text="Peruuttaa">
+      <Button fx:id="btnPeruuttaa" layoutX="95.0" layoutY="393.0" mnemonicParsing="false" onAction="#btnPeruuttaa" prefHeight="35.0" prefWidth="122.0" text="Peruuta">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <TextField fx:id="kirjaID" layoutX="34.0" layoutY="149.0" prefHeight="35.0" prefWidth="256.0" promptText="Kirja id" />
+      <TextField fx:id="kirjaID" layoutX="34.0" layoutY="149.0" prefHeight="35.0" prefWidth="256.0" promptText="Kirja_id" />
       <TextField fx:id="asiakasID" layoutX="34.0" layoutY="105.0" prefHeight="35.0" prefWidth="256.0" promptText="Asiakas ID" />
-      <Text fx:id="asiakasTiedot" layoutX="335.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asiakas Tiedot" wrappingWidth="494.13671875">
+      <Text fx:id="asiakasTiedot" layoutX="335.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asiakkaan Tiedot" wrappingWidth="494.13671875">
          <font>
             <Font name="Modern No. 20" size="25.0" />
          </font>
