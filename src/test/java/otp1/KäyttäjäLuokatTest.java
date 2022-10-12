@@ -1,15 +1,12 @@
 package otp1;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import model.Admin;
 import model.Asiakas;
-import model.Kirja;
-import model.Kirjasto;
 
 class KäyttäjäLuokatTest {
 	
