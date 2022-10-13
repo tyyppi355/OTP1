@@ -1,7 +1,7 @@
 # OTP-1
 Ryhmä 2 (R2)
 
-Ryhmän jäsenet: Riku Koski @Arbit3r, Fatlum Gerguri @Vikingi22, Hussein AL-Bayati @Hussein3030, Niko Ahonen @tyyppi355
+Ryhmän jäsenet: Riku Koski @Arbit3r , Fatlum Gerguri @Vikingi22 , Hussein AL-Bayati @Hussein3030 , Niko Ahonen @tyyppi355
 
 ## Visio ja käytetyt kirjastot/työkalut
 ![Sovellus](https://users.metropolia.fi/~rikukosk/images/BookBastion.PNG)
