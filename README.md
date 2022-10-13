@@ -11,7 +11,7 @@ Ohjelmisto mahdollistaa myös kirjojen ja asiakkastietojen luonnin.
 
 Ohjelmassammen käytettiin Ecplise kehitysympäristöä ja projekti rakennetiin maven mallin mukaisesti.
 
-###Käytetyt kirjastot
+Käytetyt kirjastot
 -JavaFx
 -Gson
 -mariadb
