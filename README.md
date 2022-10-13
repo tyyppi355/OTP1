@@ -11,13 +11,13 @@ Ohjelmisto mahdollistaa myös kirjojen ja asiakkastietojen luonnin.
 
 Ohjelmassammen käytettiin Ecplise kehitysympäristöä ja projekti rakennetiin maven mallin mukaisesti.
 
-Käytetyt kirjastot
+### Käytetyt kirjastot
 - JavaFx
 - Gson
 - mariadb
 - Junit5
 
-#Asennusohjeet
+# Asennusohjeet
 1. Laita Metropolian VPN päälle
 2. Kloonaa tämä repo omalle koneellesi
 3. Lataa JavaFx SDK omalle koneellesi https://gluonhq.com/products/javafx/
