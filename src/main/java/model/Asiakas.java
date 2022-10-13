@@ -13,7 +13,7 @@ public class Asiakas {
 	public Asiakas() {
 
 	}
-	
+
 	// get
 	public Asiakas(int as_id, String etunimi, String sukunimi, Asiakastiedot asiakastiedot) {
 		this.as_id = as_id;
@@ -21,14 +21,15 @@ public class Asiakas {
 		this.sukunimi = sukunimi;
 		this.asiakastiedot = asiakastiedot;
 	}
-	
+
 	// post
-	public Asiakas(String etunimi, String sukunimi, String puhelinnum,Asiakastiedot asiakastiedot) { // new
+	public Asiakas(String etunimi, String sukunimi, String puhelinnum, Asiakastiedot asiakastiedot) { // new
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.puhelinnum = puhelinnum;
 		this.asiakastiedot = asiakastiedot;
 	}
+
 	public Asiakas(String etunimi, String sukunimi, String puhelinnum) { // new
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
@@ -82,8 +83,5 @@ public class Asiakas {
 	public void setPuhelinnum(String puhelinnum) {
 		this.puhelinnum = puhelinnum;
 	}
-	
-	
-
 
 }

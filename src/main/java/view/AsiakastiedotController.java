@@ -1,12 +1,11 @@
 package view;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ResourceBundle;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,60 +20,68 @@ import model.Asiakas;
 import model.Asiakastiedot;
 
 public class AsiakastiedotController implements Initializable {
-	
-	
-	@FXML	private Button addUser;
-    @FXML	private Button delete;
-    @FXML	private Button edit;
-	@FXML	private TableView<Asiakas> tableview;
-    @FXML	private TableColumn<Asiakas, String> etunimi;
-    @FXML	private TableColumn<Asiakastiedot, String> kaupunki;
-    @FXML	private TableColumn<Asiakastiedot, String> osoite;
-    @FXML	private TableColumn<Asiakastiedot, Integer> posti_numero;
-    @FXML	private TableColumn<Asiakastiedot, Integer> puh_numero;
-    @FXML	private TableColumn<Asiakastiedot, String> s_posti;
-    @FXML	private TableColumn<Asiakas, String> sukunimi;	
-    @FXML	private TableColumn<Asiakastiedot, Integer> tiedot_id;
-   
-    String query = null;
-    //Db connection
-    Connection conn = null;
-    PreparedStatement pst = null;
-    ResultSet res = null;
-    Asiakastiedot astiedot = null;
-    Asiakas as= null;
-    //ObservableList<Asiakastiedot> astiedotList = FXCollections.observableArrayList();
-    ObservableList<Asiakas> astList = FXCollections.observableArrayList();
-    
-    
-    public void initialize(URL url, ResourceBundle rb) {
 
-    	etunimi.setCellValueFactory(new PropertyValueFactory<Asiakas, String>("etunimi"));
+	@FXML
+	private Button addUser;
+	@FXML
+	private Button delete;
+	@FXML
+	private Button edit;
+	@FXML
+	private TableView<Asiakas> tableview;
+	@FXML
+	private TableColumn<Asiakas, String> etunimi;
+	@FXML
+	private TableColumn<Asiakastiedot, String> kaupunki;
+	@FXML
+	private TableColumn<Asiakastiedot, String> osoite;
+	@FXML
+	private TableColumn<Asiakastiedot, Integer> posti_numero;
+	@FXML
+	private TableColumn<Asiakastiedot, Integer> puh_numero;
+	@FXML
+	private TableColumn<Asiakastiedot, String> s_posti;
+	@FXML
+	private TableColumn<Asiakas, String> sukunimi;
+	@FXML
+	private TableColumn<Asiakastiedot, Integer> tiedot_id;
+
+	String query = null;
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet res = null;
+	Asiakastiedot astiedot = null;
+	Asiakas as = null;
+
+	ObservableList<Asiakas> astList = FXCollections.observableArrayList();
+
+	public void initialize(URL url, ResourceBundle rb) {
+
+		etunimi.setCellValueFactory(new PropertyValueFactory<Asiakas, String>("etunimi"));
 		sukunimi.setCellValueFactory(new PropertyValueFactory<Asiakas, String>("sukunimi"));
 		kaupunki.setCellValueFactory(new PropertyValueFactory<Asiakastiedot, String>("kaupunki"));
 		osoite.setCellValueFactory(new PropertyValueFactory<Asiakastiedot, String>("osoite"));
 		posti_numero.setCellValueFactory(new PropertyValueFactory<Asiakastiedot, Integer>("posti_numero"));
 		puh_numero.setCellValueFactory(new PropertyValueFactory<Asiakastiedot, Integer>("puh_numero"));
 		tiedot_id.setCellValueFactory(new PropertyValueFactory<Asiakastiedot, Integer>("tiedot_id"));
-		
+
 		tableview.setItems(astList);
-		
-    }
-    @FXML	void addUser(ActionEvent event) {
-    	//Asiakastiedot asTiedot = new Asiakastiedot(1, "kaupunki", "Posti", 20, "osoite", 300);
-    	//Asiakas asList = new Asiakas("Etunimi", "Sukunimi", 122, 123);
-		// tableview.getItems().add(asTiedot);
-		 //tableview.getItems().add(asList);
-		 
-    }
 
-    @FXML	void deleteUser(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void addUser(ActionEvent event) {
 
-    @FXML
-    void editUser(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void deleteUser(ActionEvent event) {
+
+	}
+
+	@FXML
+	void editUser(ActionEvent event) {
+
+	}
 
 }

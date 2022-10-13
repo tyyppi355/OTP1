@@ -5,39 +5,32 @@ import java.io.IOException;
 import application.Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class EngineUI extends Application implements IengineUI {
-	
+
 	private static Stage primaryStage;
-	private static  Parent pane;
 
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
+	public static Stage getPrimaryStage() {
+		return primaryStage;
+	}
 
-    @Override
-    public void start(Stage stage) throws IOException {
-		
-    	
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Kirjatiedot.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/AdminManagement.fxml"));
-    	FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LogIn.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/model/LogIn.fxml"));
-        
-        Scene scene = new Scene(fxmlLoader.load()); // scene
+	@Override
+	public void start(Stage stage) throws IOException {
 
-        primaryStage = stage; // current stage(primaryStage) is stage
-        stage.setTitle("Kirjaston lainausjärjestelmä!");
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    public static void main(String[] args) {
-        launch();
-    }
-	
+		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LogIn.fxml"));
+
+		Scene scene = new Scene(fxmlLoader.load()); // scene
+
+		primaryStage = stage; // current stage(primaryStage) is stage
+		stage.setTitle("Kirjaston lainausjärjestelmä!");
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	public static void main(String[] args) {
+		launch();
+	}
 
 }
