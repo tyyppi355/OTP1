@@ -1,9 +1,12 @@
 package otp1;
 
 
+
+
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import model.Admin;
@@ -15,28 +18,25 @@ class KäyttäjäLuokatTest {
 	private Admin admin = new Admin();
 	
 	@Test
-    @DisplayName("Testaa palauttaako sovellus Admin tunnuksen oikein")
 	void testAdmin() {
 		admin.setKäyttäjätunnu("xXx_apina69_xXx");
-		final String result = admin.getKäyttäjätunnu();
-				assertEquals("Tiedot eivät vastaa", result, admin.getKäyttäjätunnu());
+		String result = admin.getKäyttäjätunnu();
+				assertEquals(result, admin.getKäyttäjätunnu(), "Tiedot vastaa");
 	}
 	
 	@Test
-    @DisplayName("Hae asiakkaan etunimi")
 	void testEtunimi() {
 		asiakas.setEtunimi("Niko");
-		final String result = asiakas.getEtunimi();
-		assertEquals("Nimet eivät vastaa", result, asiakas.getEtunimi());
+		String result = asiakas.getEtunimi();
+		assertEquals(result, asiakas.getEtunimi(), "Vastaavatko etunimet");
 		
 	}
 	
 	@Test
-    @DisplayName("Hae asiakkaan sukunimi")
 	void testSukunimi() {
 		asiakas.setSukunimi("Ahonen");
-		final String result = asiakas.getSukunimi();
-		assertEquals("Nimet eivät vastaa", result, asiakas.getSukunimi());
+		String result = asiakas.getSukunimi();
+		assertEquals( result, asiakas.getSukunimi(), "Nimet vastaa");
 	}
 
 }
