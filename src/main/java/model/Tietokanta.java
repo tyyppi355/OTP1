@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 public class Tietokanta {
 
+	/**
+	 * This method connect java to the database
+	 * @return connection to the database
+	 * @throws Exception
+	 */
 	public static Connection getConnection() throws Exception {
 		try {
 
@@ -25,6 +30,13 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param Asiakastiedot to get the data and store it in the database by using
+	 *                      for example asiakastiedot.getKaupunki()
+	 * @throws Exception
+	 */
 	public static void post_asiakas_tiedot(Asiakastiedot asiakastiedot) throws Exception {
 
 		try {
@@ -45,6 +57,13 @@ public class Tietokanta {
 
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param Kirjatiedot to get the data and store it in the database by using for
+	 *                    example kirjatiedot.getKirja_ISBN()
+	 * @throws Exception
+	 */
 	public static void post_kirjan_tiedot(Kirjatiedot kirjatiedot) throws Exception {
 
 		try {
@@ -66,6 +85,13 @@ public class Tietokanta {
 		}
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param Kirjasto to get the data and store it in the database by using for
+	 *                 example kirjasto.getKirjasto_id()
+	 * @throws Exception
+	 */
 	public static void post_kirjasto(Kirjasto kirjasto) throws Exception {
 
 		try {
@@ -85,6 +111,14 @@ public class Tietokanta {
 		}
 	}
 
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param int kirjastoid to get a specific id and get the data for that id
+	 * @return new Kirjasto object with in all it new data
+	 * @throws Exception
+	 */
 	public static Kirjasto get_kirjasto(int kirjastoid) throws Exception { // Yksi kirjasto haku
 		try {
 			Connection connection = getConnection();
@@ -112,6 +146,13 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param kirja to get the data and store it in the database for example like
+	 *              kirja.getTila()
+	 * @throws Exception
+	 */
 	public static void post_kirja(Kirja kirja) throws Exception {
 
 		try {
@@ -131,9 +172,10 @@ public class Tietokanta {
 	}
 
 	/**
-	 * Tässä tekstiä
+	 * This method gets the data form the database and print out the data the the
+	 * console
 	 * 
-	 * @return Kirja listan
+	 * @return Kirja of ArrayList
 	 * @throws Exception
 	 */
 	public static ArrayList<Kirja> get_kirjat() throws Exception {
@@ -165,6 +207,15 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param int kirja_id to get a specific id and get the data for that id
+	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
+	 *         with in all it's new data
+	 * @throws Exception
+	 */
 	public static Kirja get_kirja(int kirja_id) throws Exception {
 		try {
 			Connection connection = getConnection();
@@ -196,6 +247,13 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param Asiakas asiakas to get the data and store it in the database for
+	 *                example like asiakas.getEtunimi()
+	 * @throws Exception
+	 */
 	public static void post_asiakas(Asiakas asiakas) throws Exception {
 
 		try {
@@ -213,6 +271,15 @@ public class Tietokanta {
 
 	}
 
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param int as_id to get a specific id and gets the data for that id
+	 * @return new Asiakas object with in all it's new data and new Asiakastiedot
+	 *         object with in all it's new data
+	 * @throws Exception
+	 */
 	public static Asiakas get_asiakas(int as_id) throws Exception { // yksi asiakas + parametri
 
 		try {
@@ -242,6 +309,13 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method store the data in the database
+	 * 
+	 * @param Admin admin to get the data and store it in the database for example
+	 *              like admin.getKäyttäjätunnu()
+	 * @throws Exception
+	 */
 	public static void post_admin(Admin admin) throws Exception {
 
 		try {
@@ -260,6 +334,14 @@ public class Tietokanta {
 
 	}
 
+	/**
+	 * This method gets the data form the database and print out the data to the
+	 * console
+	 * 
+	 * @param int kirjasto_id to get a specific id and gets the data for that id
+	 * @return new Admin object with in all it's new data
+	 * @throws Exception
+	 */
 	public static Admin get_admin(int kirjasto_id) throws Exception { /// yksi admin
 		try {
 
@@ -283,6 +365,14 @@ public class Tietokanta {
 		return null;
 	}
 
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param long isbn to get a specific isbn and gets the data for that isbn
+	 * @return new Kirjatiedot object with in all it's new data
+	 * @throws Exception
+	 */
 	public static Kirjatiedot get_Kirjatiedot(long isbn) throws Exception { /// yksi admin
 		try {
 
@@ -304,7 +394,18 @@ public class Tietokanta {
 		return null;
 	}
 
-	public static Kirja lainaus(String asiakas_id, String kirja_id) throws Exception { /// yksi admin
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param String asiakas_id, String kirja_id to get a specific asiakas_id and
+	 *               get a specific kirja_id and gets the data for that kirja_id,
+	 *               asiakas_id
+	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
+	 *         with in all it's new data
+	 * @throws Exception
+	 */
+	public static Kirja lainaus(String asiakas_id, String kirja_id) throws Exception {
 		try {
 
 			Connection connection = getConnection();
@@ -338,7 +439,17 @@ public class Tietokanta {
 
 	}
 
-	public static Kirja palautus(String kirja_id) throws Exception { /// yksi admin
+	/**
+	 * This method gets the data form the database and print out the data the the
+	 * console
+	 * 
+	 * @param String kirja_id to get a specific kirja_id and gets the data for that
+	 *               kirja_id
+	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
+	 *         with in all it's new data
+	 * @throws Exception
+	 */
+	public static Kirja palautus(String kirja_id) throws Exception {
 		try {
 
 			Connection connection = getConnection();
@@ -370,6 +481,41 @@ public class Tietokanta {
 			return null;
 		}
 
+	}
+
+	// new delete_kirja method
+	public static void delete_kirja(int kirja_id) throws Exception { 
+		try {
+
+			Connection connection = getConnection();
+			PreparedStatement getData = connection.prepareStatement("DELETE FROM kirja WHERE kirja_id = " + kirja_id + "");
+			getData.executeQuery();
+			System.out.println("The book has been delete!");
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	// new delete_asiakas method
+	public static void delete_asiakas(int as_id) throws Exception { 
+		try {
+
+			Connection connection = getConnection();
+			PreparedStatement getData = connection.prepareStatement("DELETE FROM asiakas WHERE as_id = " + as_id + "");
+//			ResultSet resultSet = getData.executeQuery();
+			getData.executeQuery(); // it work like that
+			System.out.println("The asiakas has been delete!");
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		//delete_kirja(34);// this works
+		//delete_asiakas(10); // this works
 	}
 
 }

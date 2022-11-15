@@ -13,7 +13,7 @@ public class Controller implements M2V, V2M {
 	@Override
 	public boolean tarkistaLogin(String user, String pwd) {
 		try {
-			Admin a = Tietokanta.get_admin(1);
+			Admin a = Tietokanta.get_admin(1);// it will get the admin based on kirjasto_id
 			if (user.equals(a.getKäyttäjätunnu()) && pwd.equals(a.getSalasana())) {
 				return true;
 			}
@@ -67,7 +67,6 @@ public class Controller implements M2V, V2M {
 		try {
 			return Tietokanta.get_kirjat();
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			return null;
 		}

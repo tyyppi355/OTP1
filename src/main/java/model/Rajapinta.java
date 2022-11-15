@@ -3,7 +3,6 @@ package model;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

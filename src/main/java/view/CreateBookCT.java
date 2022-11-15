@@ -55,13 +55,14 @@ public class CreateBookCT extends EngineUI implements Initializable {
 		String kuvaus = luoKuvaus.getText();
 		String vuosi = luoVuosi.getText();
 		String sivumaara = luoSivumaara.getText();
-		String erapaiva = luoErapaiva.getText();
+		String erapaiva = luoErapaiva.getText();// what is this?
 
 		if (bookISBN.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Please fill the book ISBN");
 			return;
 		}
-
+		
+		// what is this?
 		String query = "INSERT INTO kirjan_tiedot (kirja_ISBN, nimi, kustantaja, kirjoittajat, kuva, julkaisuvuosi, sivumäärä) VALUES ("
 				+ "'" + bookISBN + "', '" + kirjaNimi + "', '" + kunstantaja + "', '" + kirjoittaja + "', '" + kuvaus
 				+ "', '" + vuosi + "', '" + erapaiva + "', '" + sivumaara + "', '" + "')";
