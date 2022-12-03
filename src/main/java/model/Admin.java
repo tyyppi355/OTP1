@@ -40,5 +40,4 @@ public class Admin {
 	public void setKirjasto_id(int kirjasto_id) {
 		this.kirjasto_id = kirjasto_id;
 	}
-
 }

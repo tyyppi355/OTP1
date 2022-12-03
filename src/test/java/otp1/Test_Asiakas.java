@@ -6,43 +6,42 @@ import model.*;
 
 public class Test_Asiakas {
 
-	private Asiakas asiakas = new Asiakas();
+	private Asiakas asiakas = new Asiakas(12, "Niko", "Ahonen", asiakastiedot);
+	private Asiakastiedot asiakastiedot = new Asiakastiedot("Espoo", "testi@gmail.com", "02230", "Matintie 3", "1234567");
 
 	@Test
-	void test_asiakas_ID() {
-		asiakas.setAs_id(1100);
-		assertEquals(1100, asiakas.getAs_id(), "Tiedot eivät oikein");
+	void testKirjastoID() {
+        assertEquals(asiakas.getAs_id(), 12);
 	}
 
 	@Test
-	void test_asiakas_Etunimi() {
-		asiakas.setEtunimi("jack");
-		assertEquals("jack", asiakas.getEtunimi(), "Tiedot eivät oikein");
+	void testENimi() {
+        assertEquals(asiakas.getEtunimi(), "Niko");
+	}
+	
+	@Test
+	void testSNimi() {
+        assertEquals(asiakas.getSukunimi(), "Ahonen");
 	}
 
 	@Test
 	void test_asiakas_Kirja_id() {
 		asiakas.setKirja_id(12);
-		assertEquals(12, asiakas.getKirja_id(), "Tiedot eivät oikein");
+		assertEquals(12, asiakas.getKirja_id(), "Tiedot eivät vastaa oikeita");
 	}
 
 	@Test
 	void test_asiakas_Puhelinnum() {
 		asiakas.setPuhelinnum("04233425");
-		assertEquals("04233425", asiakas.getPuhelinnum(), "Tiedot eivät oikein");
+		assertEquals("04233425", asiakas.getPuhelinnum(), "Tiedot eivät vastaa oikeita");
 	}
 
-	@Test
-	void test_asiakas_Sukunimi() {
-		asiakas.setSukunimi("joy");
-		assertEquals("joy", asiakas.getSukunimi(), "Tiedot eivät oikein");
-	}
 
 	@Test
 	void test_asiakas_Asiakastiedot() {
 		Asiakastiedot s = new Asiakastiedot();
 		asiakas.setAsiakastiedot(s);
-		assertEquals(s, asiakas.getAsiakastiedot(), "Tiedot eivät oikein");
+		assertEquals(s, asiakas.getAsiakastiedot(), "Tiedot eivät vastaa oikeita");
 	}
 
 }

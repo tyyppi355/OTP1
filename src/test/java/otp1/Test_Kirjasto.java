@@ -6,42 +6,43 @@ import model.*;
 
 public class Test_Kirjasto {
 
-	private Kirjasto kirjasto = new Kirjasto();
+	private Kirjasto kirjasto = new Kirjasto(1, "Matinkylän Kirjasto", "Matinlahdentie", 04455775, 02230, "Espoo");
 
 	@Test
-	void test_kirjasto_Kirjasto_id() {
-		kirjasto.setKirjasto_id(1202);
-		assertEquals(1202, kirjasto.getKirjasto_id(), "Tiedot eivät oikein");
+    @DisplayName("Hae kirjan tila")
+	void testKirjanTila() {
+        kirja.setTila("Lainauksessa");
+        final String result = kirja.getTila();
+        assertEquals("Tiedot eivät vastaa oikeita", result, kirja.getTila());
 	}
-
+	
 	@Test
-	void test_kirjasto_Kirjasto_nimi() {
-		kirjasto.setKirjasto_nimi("Sello Kirjasto");
-		assertEquals("Sello Kirjasto", kirjasto.getKirjasto_nimi(), "Tiedot eivät oikein");
+	void testKirjastoID() {
+        assertEquals(kirjasto.getKirjasto_id(), 1);
 	}
-
+	
 	@Test
-	void test_kirjasto_Kaupunki() {
-		kirjasto.setKaupunki("Espoo");
-		assertEquals("Espoo", kirjasto.getKaupunki(), "Tiedot eivät oikein");
+	void testKirjastoNimi() {
+        assertEquals(kirjasto.getKirjasto_nimi(), "Matinkylän Kirjasto");
 	}
-
+	
 	@Test
-	void test_kirjasto_Osoite() {
-		kirjasto.setOsoite("Leppävaara");
-		assertEquals("Leppävaara", kirjasto.getOsoite(), "Tiedot eivät oikein");
+	void testKirjastoOsoite() {
+        assertEquals(kirjasto.getOsoite(), "Matinlahdentie");
 	}
-
+	
 	@Test
-	void test_kirjasto_Posti_numero() {
-		kirjasto.setPosti_numero(23242);
-		assertEquals(23242, kirjasto.getPosti_numero(), "Tiedot eivät oikein");
+	void testKirjastonmro() {
+        assertEquals(kirjasto.getPuh_numero(), 04455775);
 	}
-
+	
 	@Test
-	void test_kirjasto_Puh_numero() {
-		kirjasto.setPuh_numero(0434432);
-		assertEquals(0434432, kirjasto.getPuh_numero(), "Tiedot eivät oikein");
+	void testKirjastopostinmro() {
+        assertEquals(kirjasto.getPosti_numero(), 02230);
 	}
-
+	
+	@Test
+	void testKirjastoKaupunki() {
+        assertEquals(kirjasto.getKaupunki(), "Espoo");	
+	}
 }

@@ -15,28 +15,21 @@ import model.Asiakas;
 class KäyttäjäLuokatTest {
 	
 	private Asiakas asiakas = new Asiakas();
-	private Admin admin = new Admin();
+	private Admin admin = new Admin("Admin", "1234", 1);
 	
 	@Test
 	void testAdmin() {
-		admin.setKäyttäjätunnu("xXx_apina69_xXx");
-		String result = admin.getKäyttäjätunnu();
-				assertEquals(result, admin.getKäyttäjätunnu(), "Tiedot vastaa");
+			assertEquals(admin.getKäyttäjätunnu(), "Admin");
 	}
 	
 	@Test
-	void testEtunimi() {
-		asiakas.setEtunimi("Niko");
-		String result = asiakas.getEtunimi();
-		assertEquals(result, asiakas.getEtunimi(), "Vastaavatko etunimet");
-		
+	void testSalasana() {
+			assertEquals(admin.getSalasana(), "1234");
 	}
 	
 	@Test
-	void testSukunimi() {
-		asiakas.setSukunimi("Ahonen");
-		String result = asiakas.getSukunimi();
-		assertEquals( result, asiakas.getSukunimi(), "Nimet vastaa");
+	void testKirjastoID() {
+        assertEquals(admin.getKirjasto_id(), 1);
 	}
 
 }

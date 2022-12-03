@@ -6,25 +6,23 @@ import model.*;
 
 public class Test_Admin {
 
-	private Admin admin = new Admin();
+	private Admin admin = new Admin("Admin", "1234", 1);
 
 	@Test
-	void testAdminKäyttäjätunnu() {
-		admin.setKäyttäjätunnu("Admin");
-		String result = admin.getKäyttäjätunnu();
-		assertEquals("Admin", result, "Tiedot eivät vastaa");
+    @DisplayName("Testaa palauttaako sovellus Admin tunnuksen oikein")
+	void testAdmin() {
+			assertEquals(admin.getKäyttäjätunnu(), "Admin");
 	}
-
+	
 	@Test
-	void testAdminSalasana() {
-		admin.setSalasana("123");
-		assertEquals("123", admin.getSalasana(), "Tiedot eivät oikein");
+    @DisplayName("Testaa palauttaako sovellus salasanan oikein")
+	void testSalasana() {
+			assertEquals(admin.getSalasana(), "1234");
 	}
-
+	
 	@Test
-	void testAdminKirjastoID() {
-		admin.setKirjasto_id(1001);
-		assertEquals(1001, admin.getKirjasto_id(), "Tiedot eivät oikein");
+    @DisplayName("hae kirjaston IDn tiedot")
+	void testKirjastoID() {
+        assertEquals(admin.getKirjasto_id(), 1);
 	}
-
 }
