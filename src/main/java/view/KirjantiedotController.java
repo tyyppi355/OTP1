@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 
 import model.Kirja;
 import model.Kirjatiedot;
+import model.LangPackage;
 
 public class KirjantiedotController extends EngineUI implements Initializable {
 
@@ -139,7 +140,7 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	@FXML
 	void btnClose(ActionEvent event) throws IOException {
 		// get a handle to the stage
-		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		Stage stage = EngineUI.getPrimaryStage();
@@ -151,7 +152,7 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 
 	public void createBook(ActionEvent event) throws IOException {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();

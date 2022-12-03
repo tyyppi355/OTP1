@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.LangPackage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
@@ -35,9 +37,21 @@ public class LogInController extends Main {
 	@FXML
 	private Label error;
 	@FXML
+	private Label userText;
+	@FXML
+	private Label passText;
+	@FXML
 	private TextField username;
 	@FXML
 	private PasswordField password;
+	
+	@FXML
+	public void initialize(){
+		
+
+
+	}
+	
 
 	public void userLogin(ActionEvent event) throws IOException {
 		checkLogin();
@@ -72,7 +86,7 @@ public class LogInController extends Main {
 
 	public static void changeScene() throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		Stage stage = EngineUI.getPrimaryStage();

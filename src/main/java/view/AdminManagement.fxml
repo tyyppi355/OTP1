@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.24874371859296482" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="300.0" style="-fx-border-style: doted;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminController">
+<SplitPane dividerPositions="0.24874371859296482" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="300.0" style="-fx-border-style: doted;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Label layoutX="90.0" layoutY="34.0" text="Admin " AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="34.0">
+            <Label layoutX="90.0" layoutY="34.0" text="%Admin" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="34.0">
                <font>
                   <Font size="37.0" />
                </font>
@@ -18,11 +18,11 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="80.0">
          <children>
-            <Button fx:id="btnBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" mnemonicParsing="false" onAction="#AllBooks" prefHeight="39.0" prefWidth="200.0" text="Add Books" />
-            <Button fx:id="btnBorrowBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="106.0" mnemonicParsing="false" onAction="#BorrowBook" prefHeight="39.0" prefWidth="200.0" text="Borrow Book" />
-            <Button fx:id="btnUsers" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="59.0" mnemonicParsing="false" onAction="#AllUsers" prefHeight="39.0" prefWidth="200.0" text="Add Users" />
-            <Button fx:id="btnLogout" layoutX="49.0" layoutY="308.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="39.0" prefWidth="106.0" text="Log out" />
-            <Button fx:id="btnReturnBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="153.0" mnemonicParsing="false" onAction="#ReturnBook" prefHeight="39.0" prefWidth="200.0" text="Return Book" />
+            <Button fx:id="btnBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" mnemonicParsing="false" onAction="#AllBooks" prefHeight="39.0" prefWidth="200.0" text="%Add_Books" />
+            <Button fx:id="btnBorrowBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="106.0" mnemonicParsing="false" onAction="#BorrowBook" prefHeight="39.0" prefWidth="200.0" text="%Borrow_book" />
+            <Button fx:id="btnUsers" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="59.0" mnemonicParsing="false" onAction="#AllUsers" prefHeight="39.0" prefWidth="200.0" text="%Add_users" />
+            <Button fx:id="btnLogout" layoutX="49.0" layoutY="308.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="39.0" prefWidth="106.0" text="%Log_out" />
+            <Button fx:id="btnReturnBook" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="153.0" mnemonicParsing="false" onAction="#ReturnBook" prefHeight="39.0" prefWidth="200.0" text="%Return_book" />
          </children></AnchorPane>
   </items>
 </SplitPane>

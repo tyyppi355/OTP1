@@ -29,6 +29,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
+import model.LangPackage;
 
 public class BooksBorrow {
 	M2V getcontroller = new Controller();
@@ -138,7 +139,7 @@ public class BooksBorrow {
 
 	public void createBook(ActionEvent event) throws IOException {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
@@ -160,7 +161,7 @@ public class BooksBorrow {
 	public void changeScene() throws IOException {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();

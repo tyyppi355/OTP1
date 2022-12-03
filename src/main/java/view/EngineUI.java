@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.LangPackage;
 
 public class EngineUI extends Application implements IengineUI {
 
@@ -19,7 +20,7 @@ public class EngineUI extends Application implements IengineUI {
 	@Override
 	public void start(Stage stage) throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LogIn.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LogIn.fxml"),LangPackage.rBundle);
 
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 

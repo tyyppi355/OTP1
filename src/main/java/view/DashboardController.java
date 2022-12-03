@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Kirjatiedot;
+import model.LangPackage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,7 +72,7 @@ public class DashboardController extends EngineUI implements Initializable {
 	void userLogOut(ActionEvent event) throws IOException {
 		buttonLogOut.getScene().getWindow().hide();
 
-		BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+		BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("LogIn.fxml"),LangPackage.rBundle);
 		Scene scene = new Scene(root, 900, 330);
 
 		Stage primaryStage = new Stage();
@@ -84,7 +85,7 @@ public class DashboardController extends EngineUI implements Initializable {
 
 	public static void changeScene() throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"),LangPackage.rBundle);
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		Stage stage = getPrimaryStage();

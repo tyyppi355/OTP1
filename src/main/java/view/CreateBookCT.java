@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.LangPackage;
 
 public class CreateBookCT extends EngineUI implements Initializable {
 
@@ -80,7 +81,7 @@ public class CreateBookCT extends EngineUI implements Initializable {
 	public void changeScene() throws IOException {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Kirjatiedot.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Kirjatiedot.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();

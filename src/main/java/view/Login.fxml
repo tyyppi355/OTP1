@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #cdcdcd;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LogInController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #cdcdcd;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LogInController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,18 +25,18 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="399.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="20.0" layoutY="108.0" text="Username">
+            <Label fx:id="userText" layoutX="20.0" layoutY="108.0" text="%Username">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="20.0" layoutY="159.0" text="Password">
+            <Label fx:id="passText" layoutX="20.0" layoutY="159.0" text="%Password">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="username" layoutX="177.0" layoutY="113.0" prefHeight="30.0" promptText="username" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="23.0" />
-            <PasswordField fx:id="password" layoutX="177.0" layoutY="164.0" prefHeight="30.0" promptText="password" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="23.0" />
+            <TextField fx:id="username" layoutX="177.0" layoutY="113.0" prefHeight="30.0" promptText="%Username" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="23.0" />
+            <PasswordField fx:id="password" layoutX="177.0" layoutY="164.0" prefHeight="30.0" promptText="%Password" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="23.0" />
             <Button fx:id="button" layoutX="226.0" layoutY="225.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFA07A;" text="Log in" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="53.0">
                <font>
                   <Font name="System Bold" size="20.0" />

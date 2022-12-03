@@ -30,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
+import model.LangPackage;
 
 public class ReturnBookC {
 
@@ -132,7 +133,7 @@ public class ReturnBookC {
 	public void changeScene() throws IOException {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();

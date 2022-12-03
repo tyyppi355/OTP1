@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Asiakas;
 import model.Asiakastiedot;
+import model.LangPackage;
 
 public class CreateUser {
 
@@ -68,7 +69,7 @@ public class CreateUser {
 	public void changeScene() throws IOException {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();

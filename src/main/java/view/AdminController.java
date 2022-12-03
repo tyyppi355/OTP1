@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.LangPackage;
 
 public class AdminController {
 
@@ -31,7 +32,7 @@ public class AdminController {
 	void AllBooks(ActionEvent event) {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Kirjatiedot.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Kirjatiedot.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
@@ -48,7 +49,7 @@ public class AdminController {
 	@FXML
 	void AllUsers(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Users.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Users.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
@@ -65,7 +66,7 @@ public class AdminController {
 	@FXML
 	void BorrowBook(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("BooksToBorrow.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("BooksToBorrow.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
@@ -82,7 +83,7 @@ public class AdminController {
 	@FXML
 	void ReturnBook(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("ReturnBook.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("ReturnBook.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
@@ -100,7 +101,7 @@ public class AdminController {
 	void userLogOut(ActionEvent event) throws IOException {
 
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Login.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("Login.fxml"),LangPackage.rBundle);
 			Scene scene = new Scene(fxmlLoader.load()); // scene
 
 			Stage stage = EngineUI.getPrimaryStage();
