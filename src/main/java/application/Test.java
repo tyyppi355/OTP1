@@ -7,12 +7,6 @@ public class Test {
 
 	public static void main(String[] args) {
 
-//		String lang_en = "en";
-//		String country_NZ = "NZ";
-
-		String lang_fi = "fi";
-		String country_FI = "FI";
-
 		Locale l_NZ = new Locale("en", "NZ");
 		ResourceBundle r_NZ = ResourceBundle.getBundle("ResourceBundle/Bundle_en_NZ", l_NZ);
 
@@ -20,7 +14,7 @@ public class Test {
 		System.out.println(r_NZ.getString("Number_of_pages"));
 		System.out.println(r_NZ.getString("Add_Books") + "\n");
 
-		Locale l_FI = new Locale(lang_fi, country_FI);
+		Locale l_FI = new Locale("fi", "FI");
 		ResourceBundle r_FI = ResourceBundle.getBundle("ResourceBundle/Bundle", l_FI);
 
 		System.out.println(r_FI.getString("Status"));

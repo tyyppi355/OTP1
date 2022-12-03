@@ -483,7 +483,13 @@ public class Tietokanta {
 
 	}
 
-	// new delete_kirja method
+	/**
+	 * This method deletes kirja from the database
+	 * 
+	 * @param int kirja_id to get a specific kirja_id and delete it
+
+	 * @throws Exception
+	 */
 	public static void delete_kirja(int kirja_id) throws Exception { 
 		try {
 
@@ -497,7 +503,13 @@ public class Tietokanta {
 		}
 	}
 	
-	// new delete_asiakas method
+	/**
+	 * This method deletes asiakas from the database
+	 * 
+	 * @param int as_id to get a specific as_id and delete it
+
+	 * @throws Exception
+	 */
 	public static void delete_asiakas(int as_id) throws Exception { 
 		try {
 
