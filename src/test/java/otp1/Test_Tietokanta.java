@@ -26,7 +26,9 @@ public class Test_Tietokanta {
 
 	@Test
 	void test_Tietokanta_get_kirja() throws Exception {
-		assertEquals("1.7", tietokanta.get_kirja(31).getLuokka(), "Tiedot eivät vastaa oikeita");
+//		String string = tietokanta.get_kirja(50).getLuokka();
+//		System.out.println("@: " + string);
+		assertEquals("2.1", tietokanta.get_kirja(50).getLuokka(), "Tiedot eivät vastaa oikeita");
 	}
 
 	@Test
@@ -36,12 +38,64 @@ public class Test_Tietokanta {
 
 	@Test
 	void test_Tietokanta_get_kirjat() throws Exception {
+		// System.out.println("FFFF:" + tietokanta.get_kirjat().get(0).getKirja_id());
 		assertEquals("hyllyssä", tietokanta.get_kirjat().get(0).getTila(), "Tiedot eivät vastaa oikeita");
 	}
 
 	@Test
 	void test_Tietokanta_get_Kirjatiedot() throws Exception {
 		assertEquals("Creative Gene", tietokanta.get_Kirjatiedot(213).getNimi(), "Tiedot eivät vastaa oikeita");
+	}
+
+	@Test
+	void test_Tietokanta_post_kirjan_tiedot() throws Exception {
+		Kirjatiedot t = new Kirjatiedot();
+		tietokanta.post_kirjan_tiedot(t);
+	}
+
+	@Test
+	void test_Tietokanta_post_admin() throws Exception {
+		Admin t = new Admin();
+		tietokanta.post_admin(t);
+	}
+
+	@Test
+	void test_Tietokanta_post_asiakas() throws Exception {
+		Asiakas t = new Asiakas();
+		tietokanta.post_asiakas(t);
+	}
+
+	@Test
+	void test_Tietokanta_post_kirja() throws Exception {
+		Kirja t = new Kirja();
+		tietokanta.post_kirja(t);
+	}
+
+	@Test
+	void test_Tietokanta_post_kirjasto() throws Exception {
+		Kirjasto t = new Kirjasto();
+		tietokanta.post_kirjasto(t);
+	}
+
+	@Test
+	void test_Tietokanta_post_asiakas_tiedot() throws Exception {
+		Asiakastiedot t = new Asiakastiedot();
+		tietokanta.post_asiakas_tiedot(t);
+	}
+
+	@Test
+	void test_Tietokanta_palautus() throws Exception {
+		tietokanta.palautus("31");
+	}
+
+	@Test
+	void test_Tietokanta_delete_asiakas() throws Exception {
+		tietokanta.delete_asiakas(31);
+	}
+
+	@Test
+	void test_Tietokanta_delete_kirja() throws Exception {
+		tietokanta.delete_kirja(31);
 	}
 
 }
