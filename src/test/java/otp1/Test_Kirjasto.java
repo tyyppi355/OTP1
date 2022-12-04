@@ -7,14 +7,6 @@ import model.*;
 public class Test_Kirjasto {
 
 	private Kirjasto kirjasto = new Kirjasto(1, "Matinkylän Kirjasto", "Matinlahdentie", 04455775, 02230, "Espoo");
-
-	@Test
-    @DisplayName("Hae kirjan tila")
-	void testKirjanTila() {
-        kirja.setTila("Lainauksessa");
-        final String result = kirja.getTila();
-        assertEquals("Tiedot eivät vastaa oikeita", result, kirja.getTila());
-	}
 	
 	@Test
 	void testKirjastoID() {

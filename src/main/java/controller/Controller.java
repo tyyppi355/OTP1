@@ -11,9 +11,9 @@ import model.Tietokanta;
 public class Controller implements M2V, V2M {
 
 	@Override
-	public boolean tarkistaLogin(String user, String pwd) {
+	public boolean tarkistaLogin(String user, String pwd,int kirjasto_id) {
 		try {
-			Admin a = Tietokanta.get_admin(1);// it will get the admin based on kirjasto_id
+			Admin a = Tietokanta.get_admin(kirjasto_id);// it will get the admin based on kirjasto_id
 			if (user.equals(a.getKäyttäjätunnu()) && pwd.equals(a.getSalasana())) {
 				return true;
 			}

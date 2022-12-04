@@ -6,9 +6,10 @@ import model.*;
 
 public class Test_Asiakas {
 
-	private Asiakas asiakas = new Asiakas(12, "Niko", "Ahonen", asiakastiedot);
+	
 	private Asiakastiedot asiakastiedot = new Asiakastiedot("Espoo", "testi@gmail.com", "02230", "Matintie 3", "1234567");
-
+	private Asiakas asiakas = new Asiakas(12, "Niko", "Ahonen", asiakastiedot);
+	
 	@Test
 	void testKirjastoID() {
         assertEquals(asiakas.getAs_id(), 12);

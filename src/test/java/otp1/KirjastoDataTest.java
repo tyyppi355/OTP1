@@ -14,7 +14,6 @@ class KirjastoDataTest {
 	private Kirjasto kirjasto = new Kirjasto();
 
 	@Test
-	@DisplayName("Hae kirjan tila")
 	void testKirjanTila() {
 		kirja.setTila("Lainauksessa");
 		final String result = kirja.getTila();
@@ -22,7 +21,6 @@ class KirjastoDataTest {
 	}
 
 	@Test
-	@DisplayName("hae kirjaston IDn tiedot")
 	void testKirjastoID() {
 		kirjasto.setKirjasto_id(12);
 		int result = kirjasto.getKirjasto_id();

@@ -6,7 +6,7 @@ import model.Kirjatiedot;
 
 public interface V2M {
 
-	public boolean tarkistaLogin(String user, String pwd);
+	public boolean tarkistaLogin(String user, String pwd,int kirjasto_id);
 
 	public Kirja lainaaPost(String asiakas_id, String kirja_id);
 

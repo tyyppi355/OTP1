@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.LangPackage;
 
 public class EngineUI extends Application implements IengineUI {
@@ -25,7 +26,7 @@ public class EngineUI extends Application implements IengineUI {
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		primaryStage = stage; // current stage(primaryStage) is stage
-		stage.setTitle("Kirjaston lainausjärjestelmä!");
+		stage.setTitle(LangPackage.rBundle.getString("Title"));
 		stage.setScene(scene);
 		stage.show();
 	}

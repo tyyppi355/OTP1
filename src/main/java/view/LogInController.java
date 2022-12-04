@@ -61,7 +61,7 @@ public class LogInController extends Main {
 
 		try {
 
-			if (postController.tarkistaLogin(username.getText(), password.getText())) {
+			if (postController.tarkistaLogin(username.getText(), password.getText(),1)) {
 
 				error.setText("Success!");
 
@@ -91,7 +91,7 @@ public class LogInController extends Main {
 
 		Stage stage = EngineUI.getPrimaryStage();
 		stage.hide();
-		stage.setTitle("Kirjaston lainausjärjestelmä!");
+		stage.setTitle(LangPackage.rBundle.getString("Title"));
 		stage.setScene(scene);
 		stage.show();
 	}
