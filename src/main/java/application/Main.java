@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Locale;
+
 import model.Kirjatiedot;
 import model.Rajapinta;
 
@@ -17,6 +19,8 @@ public class Main {
 		System.out.println(k2.getNimi());
 		
 		view.EngineUI.main(args);
+		
+		Locale locale=Locale.getDefault();
 		
 	}
 

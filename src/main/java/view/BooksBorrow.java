@@ -64,8 +64,6 @@ public class BooksBorrow {
 	private TableColumn<Kirjatiedot, String> nimi;
 	@FXML
 	private TableColumn<Kirjatiedot, Integer> sivumäärä;
-	@FXML
-	private TableColumn<Kirjatiedot, String> erapaiva;
 
 	// Buttons
 	@FXML
@@ -124,7 +122,6 @@ public class BooksBorrow {
 		kuva.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("kuva"));
 		julkasuvuosi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("julkasuvuosi"));
 		sivumäärä.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Integer>("sivumäärä"));
-		erapaiva.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("sivumäärä"));
 
 		tableview.setItems(data);
 	}

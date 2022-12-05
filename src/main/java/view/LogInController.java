@@ -13,8 +13,11 @@ import javafx.stage.Stage;
 import model.LangPackage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import application.Main;
@@ -27,15 +30,23 @@ public class LogInController extends Main {
 	private String inputWrongError = "Wrong username or password";
 
 	V2M postController = new Controller();
+	LangPackage lang;
 
 	public LogInController() {
 
 	}
 
-	@FXML
-	private Button button;
-	@FXML
-	private Label error;
+	  @FXML
+	    private Button button;
+
+	    @FXML
+	    private Button enlag;
+
+	    @FXML
+	    private Label error;
+
+	    @FXML
+	    private Button finlang;
 	@FXML
 	private Label userText;
 	@FXML
@@ -44,12 +55,20 @@ public class LogInController extends Main {
 	private TextField username;
 	@FXML
 	private PasswordField password;
+	@FXML
+    void enlag(ActionEvent event) {
+		LangPackage.getrBundle_NZ();
+    }
+
+    @FXML
+    void finlang(ActionEvent event) {
+		System.out.println("locale language on FIN: " + LangPackage.rBundle );
+		LangPackage.rBundle.getLocale();
+    }	
+	
 	
 	@FXML
 	public void initialize(){
-		
-
-
 	}
 	
 

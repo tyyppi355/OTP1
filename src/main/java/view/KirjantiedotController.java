@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
@@ -23,7 +24,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,6 +36,7 @@ import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
 import model.LangPackage;
+import model.Tietokanta;
 
 public class KirjantiedotController extends EngineUI implements Initializable {
 
@@ -69,8 +73,6 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	private TableColumn<Kirjatiedot, String> nimi;
 	@FXML
 	private TableColumn<Kirjatiedot, Integer> sivumäärä;
-	@FXML
-	private TableColumn<Kirjatiedot, String> erapaiva;
 
 	// Buttons
 	@FXML
@@ -92,13 +94,29 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	@FXML
 	void deleteBook(ActionEvent event) throws Exception {
 
-		int selectedID = tableview.getSelectionModel().getSelectedIndex();
-		if (selectedID == 0) {
-			JOptionPane.showMessageDialog(null, "Not selected");
-		} else {
-			JOptionPane.showMessageDialog(null, "Delete the data");
-			tableview.getItems().remove(selectedID);
-		}
+
+        Kirjatiedot selectedForDeletion = tableview.getSelectionModel().getSelectedItem();
+        if (selectedForDeletion == null) {
+        	JOptionPane.showMessageDialog(null,"No book selected", "Please select a book for deletion.", 0);
+            return;
+        }
+        
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting book");
+        alert.setContentText("Are you sure want to delete the book " + selectedForDeletion.getNimi() + " ?");
+        Optional<ButtonType> answer = alert.showAndWait();
+        if (answer.get() == ButtonType.OK) {
+            Boolean result = Tietokanta.delete_kirja(selectedForDeletion);
+            if (result) {
+            	JOptionPane.showMessageDialog(null,"Book deleted", selectedForDeletion.getNimi() + " was deleted successfully.", 0);
+            	data.remove(selectedForDeletion);
+            } else {
+            	JOptionPane.showMessageDialog(null,"Failed", selectedForDeletion.getNimi() + " could not be deleted", 0);
+            }
+        } else {
+        	JOptionPane.showMessageDialog(null,"Deletion cancelled", "Deletion process cancelled", 0);
+        }
 	}
 
 	@FXML
@@ -132,7 +150,6 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 		kuva.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("kuva"));
 		julkasuvuosi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("julkasuvuosi"));
 		sivumäärä.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Integer>("sivumäärä"));
-		erapaiva.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("sivumäärä"));
 
 		tableview.setItems(data);
 	}

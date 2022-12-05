@@ -503,6 +503,23 @@ public class Tietokanta {
 		}
 	}
 	
+	// new delete_kirja method
+		public static Boolean delete_kirja(Kirjatiedot selectedForDeletion) throws Exception { 
+			try {
+				Connection conn = getConnection();
+				String deleteStatement = "DELETE FROM kirja WHERE kirja_id  = ?";
+	            PreparedStatement stmt = conn.prepareStatement("DELETE FROM kirjan_tiedot WHERE kirja_ISBN = ?");
+	            stmt.setLong(1, selectedForDeletion.getKirja_ISBN());
+	            int res = stmt.executeUpdate();
+	            if (res == 1) {
+	                return true;
+	            }
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			return false;
+		}
+	
 	/**
 	 * This method deletes asiakas from the database
 	 * 
