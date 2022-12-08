@@ -18,7 +18,7 @@ public class Test_Controller {
 
 	@Test
 	void test_lainaaPost() throws Exception {
-		assertEquals(controller.lainaaPost("5", "52").getKirja_id(), tietokanta.get_kirjat().get(0).getKirja_id());
+		assertEquals(controller.lainaaPost("5", "51").getKirja_id(), tietokanta.get_kirjat().get(1).getKirja_id());
 	}
 
 	@Test
@@ -31,9 +31,9 @@ public class Test_Controller {
 	@Test
 	void test_haeKirjat() throws Exception {
 		Kirja kirja = new Kirja();
-		kirja.setKirja_id(52);
-		assertEquals(controller.haeKirjat().get(0).getKirja_id(), kirja.getKirja_id());
-		assertEquals(controller.haeKirjat().get(0).getKirja_id(), tietokanta.get_kirjat().get(0).getKirja_id());
+		kirja.setKirja_id(51);
+		assertEquals(controller.haeKirjat().get(1).getKirja_id(), kirja.getKirja_id());
+		//assertEquals(controller.haeKirjat().get(0).getKirja_id(), tietokanta.get_kirjat().get(0).getKirja_id());
 	}
 
 	@Test
