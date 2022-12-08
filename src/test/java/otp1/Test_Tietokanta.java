@@ -67,7 +67,8 @@ public class Test_Tietokanta {
 
 	@Test
 	void test_Tietokanta_post_kirja() throws Exception {
-		Kirja t = new Kirja();
+		Long s = Long.parseLong("9781974725915");
+		Kirja t = new Kirja("hyllyssä", "1.2", s, 1);
 		tietokanta.post_kirja(t);
 	}
 
