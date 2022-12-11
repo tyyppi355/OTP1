@@ -1,9 +1,13 @@
 package application;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Locale;
 
+import model.Kirja;
 import model.Kirjatiedot;
 import model.Rajapinta;
+import model.Tietokanta;
 
 public class Main {
 	
@@ -17,10 +21,11 @@ public class Main {
 		Kirjatiedot k2 = Rajapinta.getKirjatiedot();
 		System.out.println(k2.getKirjoittajat());
 		System.out.println(k2.getNimi());
+		LocalDate myObj = LocalDate.now();
+		System.out.println(myObj.plusDays(30).toString());
 		
 		view.EngineUI.main(args);
 		
-		Locale locale=Locale.getDefault();
 		
 	}
 

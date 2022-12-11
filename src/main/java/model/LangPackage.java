@@ -7,10 +7,7 @@ public final class LangPackage {
 	
 	public static Locale locale = new Locale("en", "NZ");
 	public static ResourceBundle rBundle = ResourceBundle.getBundle("ResourceBundle/Bundle", locale);
-	
-	
-	
-	
+
 	
 	public static ResourceBundle getrBundle() {
 		return rBundle;

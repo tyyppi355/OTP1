@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -30,8 +31,9 @@ import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
 import model.LangPackage;
+import model.Tietokanta;
 
-public class BooksBorrow {
+public class BooksBorrow implements Initializable {
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
 
@@ -98,22 +100,32 @@ public class BooksBorrow {
 
 	@FXML
 	void addItem(ActionEvent event) {
+		
+		System.out.println("hgdfhjfgdjhfdjgfh");
+		try {
+			
+			postcontroller.lainaaPost(asiakasID.getText(), kirjaID.getText());
+			Kirjatiedot t = Tietokanta.get_kirja(Integer.parseInt(kirjaID.getText())).getkTiedot();
+			data.add(t);
+			
+		} catch (Exception e) {
+			if (asiakasID.getText().isBlank() || kirjaID.getText().isBlank()) {
+				JOptionPane.showMessageDialog(null, "Please fill the data!");
+			}else {
+				JOptionPane.showMessageDialog(null, "Not available");
+			}
+			
+		}
+		
 
 	}
 
-	@FXML
 	public void initialize(URL url, ResourceBundle rb) {
 		UpdateTable();
 	}
 
 	public void UpdateTable() {
 		this.data = FXCollections.observableArrayList();
-		ArrayList<Kirja> lista = getcontroller.haeKirjat();
-
-		for (Kirja k : lista) {
-			Kirjatiedot t = k.getkTiedot();
-			data.add(t);
-		}
 
 		kirja_ISBN.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Long>("kirja_ISBN"));
 		nimi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("Nimi"));
@@ -170,14 +182,6 @@ public class BooksBorrow {
 
 			e.printStackTrace();
 		}
-
-	}
-
-	@FXML
-	void addbook(ActionEvent event) throws IOException {
-
-		Kirja k = postcontroller.lainaaPost(asiakasID.getText(), kirjaID.getText());
-		tableview.getItems().add(k.getkTiedot());
 
 	}
 

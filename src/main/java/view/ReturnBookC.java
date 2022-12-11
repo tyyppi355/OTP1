@@ -19,7 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -31,8 +31,9 @@ import javafx.stage.Stage;
 import model.Kirja;
 import model.Kirjatiedot;
 import model.LangPackage;
+import model.Tietokanta;
 
-public class ReturnBookC {
+public class ReturnBookC implements Initializable {
 
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
@@ -100,12 +101,6 @@ public class ReturnBookC {
 
 	public void UpdateTable() {
 		this.data = FXCollections.observableArrayList();
-		ArrayList<Kirja> lista = getcontroller.haeKirjat();
-
-		for (Kirja k : lista) {
-			Kirjatiedot t = k.getkTiedot();
-			data.add(t);
-		}
 
 		kirja_ISBN.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Long>("kirja_ISBN"));
 		nimi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("Nimi"));
@@ -121,6 +116,17 @@ public class ReturnBookC {
 
 	@FXML
 	private void returnBook(ActionEvent event) {
+		
+		try {
+			Tietokanta.palautus(kirjaID.getText());
+			
+			Kirjatiedot t = Tietokanta.get_kirja(Integer.parseInt(kirjaID.getText())).getkTiedot();
+			data.add(t);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

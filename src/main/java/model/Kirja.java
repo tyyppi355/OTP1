@@ -10,9 +10,17 @@ public class Kirja {
 	private Kirjatiedot kTiedot;
 	private Kirjasto kirjasto;
 	private Asiakas lainaaja;
-
+	
+	
 	public Kirja() {
 
+	}
+	
+	public Kirja(String tila, String luokka, long kirja_ISBN, int kirjasto_id) {
+		this.tila = tila;
+		this.luokka = luokka;
+		this.kirja_ISBN = kirja_ISBN;
+		this.kirjasto_id = kirjasto_id;
 	}
 
 	public Kirja(int kirja_id, String tila, String luokka, long kirja_ISBN, int kirjasto_id,
@@ -35,12 +43,14 @@ public class Kirja {
 		this.kirjasto_id = kirjasto_id;
 		this.kTiedot = kTiedot;
 	}
-	public Kirja(String tila, String luokka, long kirja_ISBN, int kirjasto_id) {
+	public Kirja(int kirja_id, String tila, String luokka, long kirja_ISBN, int kirjasto_id) {
+		this.kirja_id = kirja_id;
 		this.tila = tila;
 		this.luokka = luokka;
 		this.kirja_ISBN = kirja_ISBN;
 		this.kirjasto_id = kirjasto_id;
 	}
+	
 	
 
 	public int getKirja_id() {

@@ -36,17 +36,14 @@ public class LogInController extends Main {
 
 	}
 
-	  @FXML
-	    private Button button;
-
-	    @FXML
-	    private Button enlag;
-
-	    @FXML
-	    private Label error;
-
-	    @FXML
-	    private Button finlang;
+	@FXML
+	private Button button;
+	@FXML
+	private Button enlag;
+	@FXML
+	private Label error;
+	@FXML
+	private Button finlang;
 	@FXML
 	private Label userText;
 	@FXML
@@ -55,22 +52,29 @@ public class LogInController extends Main {
 	private TextField username;
 	@FXML
 	private PasswordField password;
-	@FXML
-    void enlag(ActionEvent event) {
-		LangPackage.getrBundle_NZ();
-    }
 
-    @FXML
-    void finlang(ActionEvent event) {
-		System.out.println("locale language on FIN: " + LangPackage.rBundle );
-		LangPackage.rBundle.getLocale();
-    }	
-	
-	
 	@FXML
-	public void initialize(){
+	void enlag(ActionEvent event) {
+		LangPackage.getrBundle_NZ();
+		changeText();
 	}
-	
+
+	@FXML
+	void finlang(ActionEvent event) {
+		LangPackage.getrBundle_FI();
+		changeText();
+	}
+
+	void changeText() {
+		userText.setText(LangPackage.rBundle.getString("Username"));
+		passText.setText(LangPackage.rBundle.getString("Password"));
+		password.setPromptText(LangPackage.rBundle.getString("Password"));
+		username.setPromptText(LangPackage.rBundle.getString("Username"));
+	}
+
+	@FXML
+	public void initialize() {
+	}
 
 	public void userLogin(ActionEvent event) throws IOException {
 		checkLogin();
@@ -80,7 +84,7 @@ public class LogInController extends Main {
 
 		try {
 
-			if (postController.tarkistaLogin(username.getText(), password.getText(),1)) {
+			if (postController.tarkistaLogin(username.getText(), password.getText(), 1)) {
 
 				error.setText("Success!");
 
@@ -105,7 +109,7 @@ public class LogInController extends Main {
 
 	public static void changeScene() throws IOException {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
+		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"), LangPackage.rBundle);
 		Scene scene = new Scene(fxmlLoader.load()); // scene
 
 		Stage stage = EngineUI.getPrimaryStage();

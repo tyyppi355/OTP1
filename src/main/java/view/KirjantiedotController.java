@@ -58,22 +58,19 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	private TextField kirjastoID;
 
 	@FXML
-	private TableView<Kirjatiedot> tableview;
+	private TableView<Kirja> tableview;
 	@FXML
-	private TableColumn<Kirjatiedot, String> julkasuvuosi;
+	private TableColumn<Kirja, Integer> kirja_ISBN;
 	@FXML
-	private TableColumn<Kirjatiedot, Long> kirja_ISBN;
+	private TableColumn<Kirja, String> nimi;
 	@FXML
-	private TableColumn<Kirjatiedot, String> kirjoittajat;
+	private TableColumn<Kirja, String> kunstantaja;
 	@FXML
-	private TableColumn<Kirjatiedot, String> kunstantaja;
+	private TableColumn<Kirja, Long> kirjoittajat;
 	@FXML
-	private TableColumn<Kirjatiedot, String> kuva;
+	private TableColumn<Kirja, Integer> kuva;
 	@FXML
-	private TableColumn<Kirjatiedot, String> nimi;
-	@FXML
-	private TableColumn<Kirjatiedot, Integer> sivumäärä;
-
+	private TableColumn<Kirja, String> julkasuvuosi;
 	// Buttons
 	@FXML
 	private Button btnClose;
@@ -89,13 +86,13 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	Connection connection;
 	ResultSet res = null;
 	PreparedStatement pst = null;
-	ObservableList<Kirjatiedot> data;
+	ObservableList<Kirja> data;
 
 	@FXML
 	void deleteBook(ActionEvent event) throws Exception {
 
 
-        Kirjatiedot selectedForDeletion = tableview.getSelectionModel().getSelectedItem();
+        Kirja selectedForDeletion = tableview.getSelectionModel().getSelectedItem();
         if (selectedForDeletion == null) {
         	JOptionPane.showMessageDialog(null,"No book selected", "Please select a book for deletion.", 0);
             return;
@@ -104,15 +101,15 @@ public class KirjantiedotController extends EngineUI implements Initializable {
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting book");
-        alert.setContentText("Are you sure want to delete the book " + selectedForDeletion.getNimi() + " ?");
+        alert.setContentText("Are you sure want to delete the book " + selectedForDeletion.getkTiedot().getNimi() + " ?");
         Optional<ButtonType> answer = alert.showAndWait();
         if (answer.get() == ButtonType.OK) {
-            Boolean result = Tietokanta.delete_kirja(selectedForDeletion);
+            Boolean result = Tietokanta.delete_kirja(selectedForDeletion.getKirja_id());
             if (result) {
-            	JOptionPane.showMessageDialog(null,"Book deleted", selectedForDeletion.getNimi() + " was deleted successfully.", 0);
+            	JOptionPane.showMessageDialog(null,"Book deleted", selectedForDeletion.getkTiedot().getNimi() + " was deleted successfully.", 0);
             	data.remove(selectedForDeletion);
             } else {
-            	JOptionPane.showMessageDialog(null,"Failed", selectedForDeletion.getNimi() + " could not be deleted", 0);
+            	JOptionPane.showMessageDialog(null,"Failed", selectedForDeletion.getkTiedot().getNimi() + " could not be deleted", 0);
             }
         } else {
         	JOptionPane.showMessageDialog(null,"Deletion cancelled", "Deletion process cancelled", 0);
@@ -124,13 +121,17 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 		Kirja k = new Kirja(kirjTila.getText(), kirjaLuokka.getText(), Long.parseLong(ISBN.getText()),
 				Integer.parseInt(kirjastoID.getText()));
 		k = postcontroller.kirjaPost(k);
-		if (k.getkTiedot() != null) {
-			tableview.getItems().add(k.getkTiedot());
-		}
+		UpdateTable();
 
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		kirja_ISBN.setText(LangPackage.rBundle.getString("Book_ID"));
+		nimi.setText(LangPackage.rBundle.getString("Status"));
+		kunstantaja.setText(LangPackage.rBundle.getString("Class"));
+		kirjoittajat.setText(LangPackage.rBundle.getString("Book_ISBN"));
+		kuva.setText(LangPackage.rBundle.getString("Library_id"));
 		UpdateTable();
 	}
 
@@ -139,17 +140,15 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 		ArrayList<Kirja> lista = getcontroller.haeKirjat();
 
 		for (Kirja k : lista) {
-			Kirjatiedot t = k.getkTiedot();
-			data.add(t);
+			data.add(k);
 		}
+		
 
-		kirja_ISBN.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Long>("kirja_ISBN"));
-		nimi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("Nimi"));
-		kunstantaja.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("kunstantaja"));
-		kirjoittajat.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("kirjoittajat"));
-		kuva.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("kuva"));
-		julkasuvuosi.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, String>("julkasuvuosi"));
-		sivumäärä.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Integer>("sivumäärä"));
+		kirja_ISBN.setCellValueFactory(new PropertyValueFactory<Kirja, Integer>("kirja_id"));
+		nimi.setCellValueFactory(new PropertyValueFactory<Kirja, String>("tila"));
+		kunstantaja.setCellValueFactory(new PropertyValueFactory<Kirja, String>("luokka"));
+		kirjoittajat.setCellValueFactory(new PropertyValueFactory<Kirja, Long>("kirja_ISBN"));
+		kuva.setCellValueFactory(new PropertyValueFactory<Kirja, Integer>("kirjasto_id"));
 
 		tableview.setItems(data);
 	}

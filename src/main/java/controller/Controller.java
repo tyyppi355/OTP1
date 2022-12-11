@@ -27,7 +27,11 @@ public class Controller implements M2V, V2M {
 	public Kirja lainaaPost(String asiakas_id, String kirja_id) {
 
 		try {
-			return Tietokanta.lainaus(asiakas_id, kirja_id);
+			if(Tietokanta.get_kirja(Integer.valueOf(kirja_id)).getLainaaja() == null) {
+				return Tietokanta.lainaus(asiakas_id, kirja_id);
+			}else {
+				throw new ArithmeticException("Not available");
+			}
 		} catch (Exception e) {
 
 			e.printStackTrace();

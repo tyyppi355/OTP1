@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tietokanta {
@@ -233,13 +234,17 @@ public class Tietokanta {
 			System.out.println("lainaaja: " + resultSet.getInt("lainaaja") + "\n");
 
 			System.out.println("All have been selected!");
-
-			return new Kirja(resultSet.getInt("kirja_id"), resultSet.getString("tila"), resultSet.getString("luokka"),
+			
+			Kirja k = new Kirja(resultSet.getInt("kirja_id"), resultSet.getString("tila"), resultSet.getString("luokka"),
 					resultSet.getLong("kirja_ISBN"), resultSet.getInt("kirjasto_id"),
 					new Kirjatiedot(resultSet.getLong("kirja_ISBN"), resultSet.getString("nimi"),
 							resultSet.getString("kustantaja"), resultSet.getString("kirjoittajat"),
 							resultSet.getString("kuva"), resultSet.getInt("julkaisuvuosi"),
 							resultSet.getInt("sivumäärä")));
+			
+			k.setLainaaja(get_asiakas(resultSet.getInt("lainaaja")));
+
+			return k;
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -412,6 +417,11 @@ public class Tietokanta {
 			PreparedStatement getData = connection.prepareStatement("UPDATE `rikukosk`.`kirja` SET `lainaaja`='"
 					+ asiakas_id + "' WHERE  `kirja_id`=" + kirja_id + ";");
 			getData.executeUpdate();
+			
+			LocalDate date = LocalDate.now();
+			getData = connection.prepareStatement(
+					"UPDATE `rikukosk`.`kirja` SET `tila`='" + date.plusDays(30) + "' WHERE  `kirja_id`=" + kirja_id + ";");
+			getData.executeUpdate();
 
 			getData = connection.prepareStatement("SELECT * FROM kirja INNER JOIN"
 					+ " kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN WHERE kirja_id = " + kirja_id + "");
@@ -456,6 +466,10 @@ public class Tietokanta {
 			PreparedStatement getData = connection.prepareStatement(
 					"UPDATE `rikukosk`.`kirja` SET `lainaaja`=NULL WHERE  `kirja_id`=" + kirja_id + ";");
 			getData.executeUpdate();
+			
+			getData = connection.prepareStatement(
+					"UPDATE `rikukosk`.`kirja` SET `tila`='" + "hyllyssä" + "' WHERE  `kirja_id`=" + kirja_id + ";");
+			getData.executeUpdate();
 
 			getData = connection.prepareStatement("SELECT * FROM kirja INNER JOIN"
 					+ " kirjan_tiedot ON kirja.kirja_ISBN=kirjan_tiedot.kirja_ISBN WHERE kirja_id = " + kirja_id + "");
@@ -490,16 +504,17 @@ public class Tietokanta {
 
 	 * @throws Exception
 	 */
-	public static void delete_kirja(int kirja_id) throws Exception { 
+	public static boolean delete_kirja(int kirja_id) throws Exception { 
 		try {
 
 			Connection connection = getConnection();
 			PreparedStatement getData = connection.prepareStatement("DELETE FROM kirja WHERE kirja_id = " + kirja_id + "");
 			getData.executeQuery();
 			System.out.println("The book has been delete!");
-
+			return true;
 		} catch (Exception e) {
 			System.out.println(e);
+			return false;
 		}
 	}
 	
