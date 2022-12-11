@@ -12,17 +12,12 @@ import model.*;
 public class Test_Controller {
 
 	private Controller controller = new Controller();
-	private Tietokanta tietokanta = new Tietokanta();
 
 	@Test
 	void test_tarkistaLogin() {
 		assumeTrue(controller.tarkistaLogin("admin", "123", 1));
 	}
 
-	@Test
-	void test_lainaaPost() throws Exception {
-		assertEquals(controller.lainaaPost("5", "51").getKirja_id(), tietokanta.get_kirjat().get(1).getKirja_id());
-	}
 
 	@Test
 	void test_kirjaPost() throws Exception {
@@ -46,8 +41,12 @@ public class Test_Controller {
 
 	@Test
 	void test_palautusPost() throws Exception {
-		controller.palautusPost("52");
+		controller.palautusPost("50");
 
+	}
+	@Test
+	void test_lainaaPost() throws Exception {
+		controller.lainaaPost("1294", "50");
 	}
 
 	@Test
