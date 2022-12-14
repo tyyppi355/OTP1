@@ -28,43 +28,60 @@ public class LogInController extends Main {
 
 	private String inputNullError = "Please enter your data.";
 	private String inputWrongError = "Wrong username or password";
-
 	V2M postController = new Controller();
 	LangPackage lang;
 
-	public LogInController() {
-
-	}
-
+	/** The buttons */
 	@FXML
 	private Button button;
 	@FXML
 	private Button enlag;
 	@FXML
-	private Label error;
-	@FXML
 	private Button finlang;
+	// labels
+	@FXML
+	private Label error;
 	@FXML
 	private Label userText;
 	@FXML
 	private Label passText;
+	// TextFields
 	@FXML
 	private TextField username;
 	@FXML
 	private PasswordField password;
 
+	/**
+	 * Enlag - created for button to change the language.
+	 * 
+	 * @author Fatlum Gerguri
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void enlag(ActionEvent event) {
 		LangPackage.getrBundle_NZ();
 		changeText();
 	}
 
+	/**
+	 * Finlang - created for button to change the language.
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param event the event
+	 */
 	@FXML
 	void finlang(ActionEvent event) {
 		LangPackage.getrBundle_FI();
 		changeText();
 	}
 
+	/**
+	 * Change text.
+	 * Method that use for changing the language of the system and calls the methods from {@link LangPackage} class
+	 * 
+	 * @author Fatlum Gerguri
+	 */
 	void changeText() {
 		userText.setText(LangPackage.rBundle.getString("Username"));
 		passText.setText(LangPackage.rBundle.getString("Password"));
@@ -72,14 +89,30 @@ public class LogInController extends Main {
 		username.setPromptText(LangPackage.rBundle.getString("Username"));
 	}
 
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	public void initialize() {
 	}
 
+	/**
+	 * User login - mthod that calls the checkLogin for log in.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void userLogin(ActionEvent event) throws IOException {
 		checkLogin();
 	}
 
+	/**
+	 * Check login - method that check the credentials of the user befor log in to the system.
+	 *
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void checkLogin() throws IOException {
 
 		try {
@@ -107,6 +140,12 @@ public class LogInController extends Main {
 
 	}
 
+	/**
+	 * Change scene - method after log in to open new window.
+	 * 
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void changeScene() throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"), LangPackage.rBundle);
@@ -119,7 +158,4 @@ public class LogInController extends Main {
 		stage.show();
 	}
 
-	protected void onStartButtonClick() throws IOException {
-		DashboardController.changeScene();
-	}
 }

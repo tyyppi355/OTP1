@@ -33,14 +33,12 @@ import model.Kirjatiedot;
 import model.LangPackage;
 import model.Tietokanta;
 
+// TODO: Auto-generated Javadoc
 public class ReturnBookC implements Initializable {
 
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
 
-	public ReturnBookC() {
-
-	}
 
 	@FXML
 	private TextField kirjaID;
@@ -84,6 +82,13 @@ public class ReturnBookC implements Initializable {
 	PreparedStatement pst = null;
 	ObservableList<Kirjatiedot> data;
 
+	/**
+	 * Delete book method - method that delete the book from list and databse.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	void deleteBook(ActionEvent event) throws Exception {
 		int selectedID = tableview.getSelectionModel().getSelectedIndex();
@@ -95,10 +100,23 @@ public class ReturnBookC implements Initializable {
 		}
 	}
 
+	/**
+	 * Initialize default method from Scene Builder where this context of the page show details of  the input fields.
+	 * Also it call the method UpdateTable() where it update the book.
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param url the url
+	 * @param rb the rb
+	 */
 	public void initialize(URL url, ResourceBundle rb) {
 		UpdateTable();
 	}
 
+	/**
+	 * This method update the book which is selected.
+	 *
+	 * @author Fatlum Gerguri
+	 */
 	public void UpdateTable() {
 		this.data = FXCollections.observableArrayList();
 
@@ -114,6 +132,12 @@ public class ReturnBookC implements Initializable {
 		tableview.setItems(data);
 	}
 
+	/**
+	 * Return book - method for returning the book.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 */
 	@FXML
 	private void returnBook(ActionEvent event) {
 		
@@ -130,12 +154,23 @@ public class ReturnBookC implements Initializable {
 
 	}
 
+	/**
+	 * Btn peruuttaa - .
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void btnPeruuttaa(ActionEvent event) throws IOException {
 
 		changeScene();
 	}
 
+	/**
+	 * Change scene.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void changeScene() throws IOException {
 
 		try {

@@ -10,14 +10,31 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.LangPackage;
 
+
+/**
+ * The Class EngineUI.
+ */
 public class EngineUI extends Application implements IengineUI {
 
+	/** The primary stage. */
 	private static Stage primaryStage;
 
+	/**
+	 * Gets the primary stage - to return the main page view.
+	 *
+	 * @return the primary stage
+	 */
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
+	/**
+	 * Start - view page to start when software starts.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param stage the stage
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Override
 	public void start(Stage stage) throws IOException {
 
@@ -31,6 +48,11 @@ public class EngineUI extends Application implements IengineUI {
 		stage.show();
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		launch();
 	}

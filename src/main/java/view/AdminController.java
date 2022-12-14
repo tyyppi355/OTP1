@@ -12,16 +12,21 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.LangPackage;
 
+
 public class AdminController {
 
+	/** The primary stage. */
 	private static Stage primaryStage;
 
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
-	   @FXML
-	    private BorderPane borderpane;
+	   /** The borderpane. */
+   	@FXML
+	private BorderPane borderpane;
+	
+	/** Buttons. */
 	@FXML
 	private Button btnBook;
 	@FXML
@@ -32,15 +37,31 @@ public class AdminController {
 	private Button btnUsers;
 	@FXML
 	private Button btnBorrowBook;
+    
+    /** Label */
     @FXML
     private Label portalName;
     
+	/**
+	 * All books - method that open the Pane panel view for all book list option.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void AllBooks(ActionEvent event) throws IOException {
 		Pane view = FXMLLoader.load(getClass().getResource("Kirjatiedot.fxml"),LangPackage.rBundle);
    	 	borderpane.setCenter(view);
 	}
 
+	/**
+	 * All users - method that open the Pane panel view for adding new user option.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void AllUsers(ActionEvent event) throws IOException {
 		Pane view = FXMLLoader.load(getClass().getResource("Users.fxml"),LangPackage.rBundle);
@@ -48,18 +69,39 @@ public class AdminController {
 		
 	}
 
+	/**
+	 * Borrow book - method that open the Pane panel view for borrowing book option.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void BorrowBook(ActionEvent event) throws IOException {
 		Pane view = FXMLLoader.load(getClass().getResource("BooksToBorrow.fxml"),LangPackage.rBundle);
    	 	borderpane.setCenter(view);
 	}
 
+	/**
+	 * Return book - method that open the Pane panel view for Return book option.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void ReturnBook(ActionEvent event) throws IOException {
 		Pane view = FXMLLoader.load(getClass().getResource("ReturnBook.fxml"),LangPackage.rBundle);
    	 	borderpane.setCenter(view);
 	}
 
+	/**
+	 * User log out - method that log out from system.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void userLogOut(ActionEvent event) throws IOException {
 		Pane view = FXMLLoader.load(getClass().getResource("Login.fxml"),LangPackage.rBundle);

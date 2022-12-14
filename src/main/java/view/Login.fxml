@@ -36,8 +36,8 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="username" layoutX="160.0" layoutY="169.0" prefHeight="30.0" prefWidth="317.0" promptText="%Username" />
-            <PasswordField fx:id="password" layoutX="160.0" layoutY="222.0" prefHeight="30.0" prefWidth="319.0" promptText="%Password" />
+            <TextField fx:id="username" layoutX="210.0" layoutY="169.0" prefHeight="30.0" prefWidth="267.0" promptText="%Username" />
+            <PasswordField fx:id="password" layoutX="213.0" layoutY="222.0" prefHeight="30.0" prefWidth="267.0" promptText="%Password" />
             <Button fx:id="button" layoutX="322.0" layoutY="294.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ea2336;" text="Log in" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />

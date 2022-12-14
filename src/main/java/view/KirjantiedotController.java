@@ -38,14 +38,11 @@ import model.Kirjatiedot;
 import model.LangPackage;
 import model.Tietokanta;
 
+
 public class KirjantiedotController extends EngineUI implements Initializable {
 
 	M2V getcontroller = new Controller();
 	V2M postcontroller = new Controller();
-
-	public KirjantiedotController() {
-
-	}
 
 	// TextFields
 	@FXML
@@ -88,6 +85,13 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	PreparedStatement pst = null;
 	ObservableList<Kirja> data;
 
+	/**
+	 * Delete book method - method that delete the book from list and databse.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	void deleteBook(ActionEvent event) throws Exception {
 
@@ -116,8 +120,16 @@ public class KirjantiedotController extends EngineUI implements Initializable {
         }
 	}
 
+	/**
+	 * addItem method adds the new items to database.
+	 * New item added by Rajapinta class
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException 
+	 */
 	@FXML
-	void addItem(ActionEvent event) {
+	void addItem(ActionEvent event) throws IOException {
 		Kirja k = new Kirja(kirjTila.getText(), kirjaLuokka.getText(), Long.parseLong(ISBN.getText()),
 				Integer.parseInt(kirjastoID.getText()));
 		k = postcontroller.kirjaPost(k);
@@ -125,17 +137,41 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 
 	}
 
-	public void initialize(URL url, ResourceBundle rb) {
+	/**
+	 * Initialize default method from Scene Builder where this context of the page show details of  the input fields.
+	 * Also it call the method UpdateTable() where it update the book.
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param url the url
+	 * @param rb the rb
+	 */
+	public void initialize(URL url, ResourceBundle rb){
 		
 		kirja_ISBN.setText(LangPackage.rBundle.getString("Book_ID"));
 		nimi.setText(LangPackage.rBundle.getString("Status"));
 		kunstantaja.setText(LangPackage.rBundle.getString("Class"));
 		kirjoittajat.setText(LangPackage.rBundle.getString("Book_ISBN"));
 		kuva.setText(LangPackage.rBundle.getString("Library_id"));
-		UpdateTable();
+
+
+
+		try {
+			UpdateTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public void UpdateTable() {
+
+	/**
+	 * This method update the book which is selected.
+	 *
+	 * @author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void UpdateTable() throws IOException {
 		this.data = FXCollections.observableArrayList();
 		ArrayList<Kirja> lista = getcontroller.haeKirjat();
 
@@ -153,19 +189,13 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 		tableview.setItems(data);
 	}
 
-	@FXML
-	void btnClose(ActionEvent event) throws IOException {
-		// get a handle to the stage
-		FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
-		Scene scene = new Scene(fxmlLoader.load()); // scene
-
-		Stage stage = EngineUI.getPrimaryStage();
-		stage.hide();
-		stage.setTitle("Kirjaston lainausjärjestelmä!");
-		stage.setScene(scene);
-		stage.show();
-	}
-
+	/**
+	 * Creates the book - method that add new book on the list and database.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void createBook(ActionEvent event) throws IOException {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"),LangPackage.rBundle);

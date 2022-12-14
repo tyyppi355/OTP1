@@ -17,10 +17,12 @@ import model.Asiakas;
 import model.Asiakastiedot;
 import model.LangPackage;
 
+
 public class CreateUser {
 
 	V2M postcontroller = new Controller();
 
+	/** Text Fields. */
 	@FXML
 	private TextField luoEtunimi;
 	@FXML
@@ -36,11 +38,19 @@ public class CreateUser {
 	@FXML
 	private TextField luoSukunimi;
 
+	/** buttons. */
 	@FXML
 	private Button luoBtn;
 	@FXML
 	private Button peruuttaa;
 
+	/**
+	 * Luo kayttajaa - method that add new user to system.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void luoKayttajaa(ActionEvent event) throws IOException {
 		String etunimi = luoEtunimi.getText();
@@ -60,12 +70,25 @@ public class CreateUser {
 		changeScene();
 	}
 
+	/**
+	 * Peruuttaa - cancel the adding the new user.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void peruuttaa(ActionEvent event) throws IOException {
 
 		changeScene();
 	}
 
+	/**
+	 * Change scene - after canceled then change the screen to main screen.
+	 *
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void changeScene() throws IOException {
 
 		try {

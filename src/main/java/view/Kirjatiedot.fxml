@@ -30,7 +30,7 @@
             <TableColumn fx:id="sivumäärä" prefWidth="87.0" text="Sivumäärä" />
         </columns>
       </TableView>
-      <Button fx:id="update" layoutX="947.0" layoutY="384.0" mnemonicParsing="false" onAction="#UpdateTable" prefHeight="35.0" prefWidth="84.0" text="%Update">
+      <Button fx:id="update" layoutX="947.0" layoutY="384.0" mnemonicParsing="false" onAction="#createBook" prefHeight="35.0" prefWidth="84.0" text="%Update">
          <font>
             <Font size="15.0" />
          </font></Button>

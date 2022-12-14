@@ -86,6 +86,13 @@ public class BooksBorrow implements Initializable {
 	PreparedStatement pst = null;
 	ObservableList<Kirjatiedot> data;
 
+	/**
+	 * Delete book method - method that delete the book from list and databse.
+	 *
+	 *@author Fatlum Gerguri
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	void deleteBook(ActionEvent event) throws Exception {
 
@@ -98,10 +105,18 @@ public class BooksBorrow implements Initializable {
 		}
 	}
 
+	/**
+	 * addItem method adds the new items to database.
+	 * New item added by Rajapinta class
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException 
+	 */
 	@FXML
 	void addItem(ActionEvent event) {
 		
-		System.out.println("hgdfhjfgdjhfdjgfh");
+		System.out.println("test");
 		try {
 			
 			postcontroller.lainaaPost(asiakasID.getText(), kirjaID.getText());
@@ -119,11 +134,25 @@ public class BooksBorrow implements Initializable {
 		
 
 	}
-
+	/**
+	 * Initialize default method from Scene Builder where this context of the page show details of  the input fields.
+	 * Also it call the method UpdateTable() where it update the book.
+	 * 
+	 * @author Fatlum Gerguri
+	 * @param url the url
+	 * @param rb the rb
+	 */
 	public void initialize(URL url, ResourceBundle rb) {
 		UpdateTable();
 	}
 
+	/**
+	 * This method update the book which is selected.
+	 *
+	 * @author Fatlum Gerguri
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void UpdateTable() {
 		this.data = FXCollections.observableArrayList();
 
@@ -136,53 +165,6 @@ public class BooksBorrow implements Initializable {
 		sivumäärä.setCellValueFactory(new PropertyValueFactory<Kirjatiedot, Integer>("sivumäärä"));
 
 		tableview.setItems(data);
-	}
-
-	@FXML
-	void btnClose(ActionEvent event) throws IOException {
-		// get a handle to the stage
-		Stage stage = (Stage) btnClose.getScene().getWindow();
-		// do what you have to do
-		stage.close();
-	}
-
-	public void createBook(ActionEvent event) throws IOException {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("CreateBook.fxml"),LangPackage.rBundle);
-			Scene scene = new Scene(fxmlLoader.load()); // scene
-
-			Stage stage = EngineUI.getPrimaryStage();
-			stage.hide();
-			stage.setTitle("Kirjaston lainausjärjestelmä!");
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	private void btnPeruuttaa(ActionEvent event) throws IOException {
-		changeScene();
-	}
-
-	public void changeScene() throws IOException {
-
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(EngineUI.class.getResource("AdminManagement.fxml"),LangPackage.rBundle);
-			Scene scene = new Scene(fxmlLoader.load()); // scene
-
-			Stage stage = EngineUI.getPrimaryStage();
-			stage.hide();
-			stage.setTitle("Kirjaston lainausjärjestelmä ");
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-
 	}
 
 }
