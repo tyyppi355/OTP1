@@ -9,9 +9,18 @@ import com.google.gson.JsonParser;
 
 public class Rajapinta {
 
+	/** The Data. */
 	private static Json Data = null;
+	
+	/** The kirjatiedot. */
 	private static Kirjatiedot kirjatiedot;
 
+	/**
+	 * Muodostaa yhdeyden https://openlibrary.org/dev/docs/api/search
+	 * Rajapintaan ja asettaa parametriksi ISBN numeron.
+	 * Metodi lähettää json stringin parse() metodiin jatkokäsittelyä varten
+	 * @param isbn the isbn
+	 */
 	public static void yhteys(String isbn) {
 
 		java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
@@ -24,10 +33,10 @@ public class Rajapinta {
 	}
 
 	/**
-	 * <p>
-	 * Metodi parsee rajapinnasta olevan json datan ja muuttaa sen gson-kirjaston
-	 * avulla Json olioon
-	 * </p>
+	 * Parses Json String using Gson into Json object,
+	 * defined by @author rikuk
+	 * @author rikuk
+	 * @param responseBody the response body
 	 */
 	public static void parse(String responseBody) {
 
@@ -50,18 +59,38 @@ public class Rajapinta {
 
 	}
  
+	/**
+	 * Gets the data.
+	 *
+	 * @return the data
+	 */
 	public static Json getData() {
 		return Data;
 	}
 
+	/**
+	 * Sets the data.
+	 *
+	 * @param data the new data
+	 */
 	public static void setData(Json data) {
 		Data = data;
 	}
 
+	/**
+	 * Gets the kirjatiedot.
+	 *
+	 * @return the kirjatiedot
+	 */
 	public static Kirjatiedot getKirjatiedot() {
 		return kirjatiedot;
 	}
 
+	/**
+	 * Sets the kirjatiedot.
+	 *
+	 * @param kirjatiedot the new kirjatiedot
+	 */
 	public static void setKirjatiedot(Kirjatiedot kirjatiedot) {
 		Rajapinta.kirjatiedot = kirjatiedot;
 	}

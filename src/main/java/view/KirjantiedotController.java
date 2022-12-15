@@ -5,17 +5,13 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
-
-
 import controller.Controller;
 import controller.M2V;
 import controller.V2M;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,63 +27,104 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import model.Kirja;
-import model.Kirjatiedot;
 import model.LangPackage;
 import model.Tietokanta;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KirjantiedotController.
+ */
 public class KirjantiedotController extends EngineUI implements Initializable {
 
+	/** The getcontroller. */
 	M2V getcontroller = new Controller();
+	
+	/** The postcontroller. */
 	V2M postcontroller = new Controller();
 
+	/** The isbn. */
 	// TextFields
 	@FXML
 	private TextField ISBN;
+	
+	/** The kirj tila. */
 	@FXML
 	private TextField kirjTila;
+	
+	/** The kirja luokka. */
 	@FXML
 	private TextField kirjaLuokka;
+	
+	/** The kirjasto ID. */
 	@FXML
 	private TextField kirjastoID;
 
+	/** The tableview. */
 	@FXML
 	private TableView<Kirja> tableview;
+	
+	/** The kirja ISBN. */
 	@FXML
 	private TableColumn<Kirja, Integer> kirja_ISBN;
+	
+	/** The nimi. */
 	@FXML
 	private TableColumn<Kirja, String> nimi;
+	
+	/** The kunstantaja. */
 	@FXML
 	private TableColumn<Kirja, String> kunstantaja;
+	
+	/** The kirjoittajat. */
 	@FXML
 	private TableColumn<Kirja, Long> kirjoittajat;
+	
+	/** The kuva. */
 	@FXML
 	private TableColumn<Kirja, Integer> kuva;
+	
+	/** The julkasuvuosi. */
 	@FXML
 	private TableColumn<Kirja, String> julkasuvuosi;
+	
+	/** The btn close. */
 	// Buttons
 	@FXML
 	private Button btnClose;
+	
+	/** The delete. */
 	@FXML
 	private Button delete;
+	
+	/** The edit. */
 	@FXML
 	private Button edit;
+	
+	/** The add book. */
 	@FXML
 	private Button addBook;
+	
+	/** The create book. */
 	@FXML
 	private Button createBook;
 
+	/** The connection. */
 	Connection connection;
+	
+	/** The res. */
 	ResultSet res = null;
+	
+	/** The pst. */
 	PreparedStatement pst = null;
+	
+	/** The data. */
 	ObservableList<Kirja> data;
 
 	/**
 	 * Delete book method - method that delete the book from list and databse.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws Exception the exception
 	 */
@@ -122,10 +159,9 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	/**
 	 * addItem method adds the new items to database.
 	 * New item added by Rajapinta class
-	 * 
-	 * @author Fatlum Gerguri
+	 *
 	 * @param event the event
-	 * @throws IOException 
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
 	void addItem(ActionEvent event) throws IOException {
@@ -140,7 +176,6 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	 * Initialize default method from Scene Builder where this context of the page show details of  the input fields.
 	 * Also it call the method UpdateTable() where it update the book.
 	 * 
-	 * @author Fatlum Gerguri
 	 * @param url the url
 	 * @param rb the rb
 	 */
@@ -163,11 +198,11 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	}
 
 
+
+	
 	/**
-	 * This method update the book which is selected.
+	 * Update table.
 	 *
-	 * @author Fatlum Gerguri
-	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void UpdateTable() throws IOException {
@@ -191,7 +226,6 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 	/**
 	 * Creates the book - method that add new book on the list and database.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */

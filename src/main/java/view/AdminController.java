@@ -45,7 +45,6 @@ public class AdminController {
 	/**
 	 * All books - method that open the Pane panel view for all book list option.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -58,7 +57,6 @@ public class AdminController {
 	/**
 	 * All users - method that open the Pane panel view for adding new user option.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -72,7 +70,6 @@ public class AdminController {
 	/**
 	 * Borrow book - method that open the Pane panel view for borrowing book option.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -85,7 +82,6 @@ public class AdminController {
 	/**
 	 * Return book - method that open the Pane panel view for Return book option.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -98,7 +94,6 @@ public class AdminController {
 	/**
 	 * User log out - method that log out from system.
 	 *
-	 *@author Fatlum Gerguri
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */

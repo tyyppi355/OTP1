@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 public class Tietokanta {
 
 	/**
-	 * This method connect java to the database
+	 * This method connect java to the database.
+	 *
 	 * @return connection to the database
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Connection getConnection() throws Exception {
 		
@@ -39,11 +41,10 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method store the data in the database
-	 * 
-	 * @param Asiakastiedot to get the data and store it in the database by using
-	 *                      for example asiakastiedot.getKaupunki()
-	 * @throws Exception
+	 * This method store the data in the database.
+	 *
+	 * @param asiakastiedot the asiakastiedot
+	 * @throws Exception the exception
 	 */
 	public static void post_asiakas_tiedot(Asiakastiedot asiakastiedot) throws Exception {
 
@@ -65,12 +66,12 @@ public class Tietokanta {
 
 	}
 
+	
 	/**
-	 * This method store the data in the database
-	 * 
-	 * @param Kirjatiedot to get the data and store it in the database by using for
-	 *                    example kirjatiedot.getKirja_ISBN()
-	 * @throws Exception
+	 * Post kirjan tiedot.
+	 *
+	 * @param kirjatiedot the kirjatiedot
+	 * @throws Exception the exception
 	 */
 	public static void post_kirjan_tiedot(Kirjatiedot kirjatiedot) throws Exception {
 
@@ -94,11 +95,10 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method store the data in the database
-	 * 
-	 * @param Kirjasto to get the data and store it in the database by using for
-	 *                 example kirjasto.getKirjasto_id()
-	 * @throws Exception
+	 * This method store the data in the database.
+	 *
+	 * @param kirjasto the kirjasto
+	 * @throws Exception the exception
 	 */
 	public static void post_kirjasto(Kirjasto kirjasto) throws Exception {
 
@@ -121,11 +121,11 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param int kirjastoid to get a specific id and get the data for that id
+	 * console.
+	 *
+	 * @param kirjastoid the kirjastoid
 	 * @return new Kirjasto object with in all it new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Kirjasto get_kirjasto(int kirjastoid) throws Exception { // Yksi kirjasto haku
 		try {
@@ -155,11 +155,11 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method store the data in the database
-	 * 
+	 * This method store the data in the database.
+	 *
 	 * @param kirja to get the data and store it in the database for example like
 	 *              kirja.getTila()
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static void post_kirja(Kirja kirja) throws Exception {
 
@@ -181,10 +181,10 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
+	 * console.
+	 *
 	 * @return Kirja of ArrayList
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static ArrayList<Kirja> get_kirjat() throws Exception {
 		try {
@@ -217,12 +217,12 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param int kirja_id to get a specific id and get the data for that id
+	 * console.
+	 *
+	 * @param kirja_id the kirja id
 	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
 	 *         with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Kirja get_kirja(int kirja_id) throws Exception {
 		try {
@@ -260,11 +260,10 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method store the data in the database
-	 * 
-	 * @param Asiakas asiakas to get the data and store it in the database for
-	 *                example like asiakas.getEtunimi()
-	 * @throws Exception
+	 * This method store the data in the database.
+	 *
+	 * @param asiakas the asiakas
+	 * @throws Exception the exception
 	 */
 	public static void post_asiakas(Asiakas asiakas) throws Exception {
 
@@ -285,12 +284,12 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param int as_id to get a specific id and gets the data for that id
+	 * console.
+	 *
+	 * @param as_id the as id
 	 * @return new Asiakas object with in all it's new data and new Asiakastiedot
 	 *         object with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Asiakas get_asiakas(int as_id) throws Exception { // yksi asiakas + parametri
 
@@ -322,11 +321,10 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method store the data in the database
-	 * 
-	 * @param Admin admin to get the data and store it in the database for example
-	 *              like admin.getKäyttäjätunnu()
-	 * @throws Exception
+	 * This method store the data in the database.
+	 *
+	 * @param admin the admin
+	 * @throws Exception the exception
 	 */
 	public static void post_admin(Admin admin) throws Exception {
 
@@ -348,11 +346,11 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data to the
-	 * console
-	 * 
-	 * @param int kirjasto_id to get a specific id and gets the data for that id
+	 * console.
+	 *
+	 * @param kirjasto_id the kirjasto id
 	 * @return new Admin object with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Admin get_admin(int kirjasto_id) throws Exception { /// yksi admin
 		try {
@@ -379,11 +377,11 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param long isbn to get a specific isbn and gets the data for that isbn
+	 * console.
+	 *
+	 * @param isbn the isbn
 	 * @return new Kirjatiedot object with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Kirjatiedot get_Kirjatiedot(long isbn) throws Exception { /// yksi admin
 		try {
@@ -408,14 +406,13 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param String asiakas_id, String kirja_id to get a specific asiakas_id and
-	 *               get a specific kirja_id and gets the data for that kirja_id,
-	 *               asiakas_id
+	 * console.
+	 *
+	 * @param asiakas_id the asiakas id
+	 * @param kirja_id the kirja id
 	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
 	 *         with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Kirja lainaus(String asiakas_id, String kirja_id) throws Exception {
 		try {
@@ -458,13 +455,12 @@ public class Tietokanta {
 
 	/**
 	 * This method gets the data form the database and print out the data the the
-	 * console
-	 * 
-	 * @param String kirja_id to get a specific kirja_id and gets the data for that
-	 *               kirja_id
+	 * console.
+	 *
+	 * @param kirja_id the kirja id
 	 * @return new Kirja object with in all it's new data and new Kirjatiedot object
 	 *         with in all it's new data
-	 * @throws Exception
+	 * @throws Exception the exception
 	 */
 	public static Kirja palautus(String kirja_id) throws Exception {
 		try {
@@ -505,11 +501,11 @@ public class Tietokanta {
 	}
 
 	/**
-	 * This method deletes kirja from the database
-	 * 
-	 * @param int kirja_id to get a specific kirja_id and delete it
-
-	 * @throws Exception
+	 * This method deletes kirja from the database.
+	 *
+	 * @param kirja_id the kirja id
+	 * @return true, if successful
+	 * @throws Exception the exception
 	 */
 	public static boolean delete_kirja(int kirja_id) throws Exception { 
 		try {
@@ -525,6 +521,13 @@ public class Tietokanta {
 		}
 	}
 	
+	/**
+	 * Delete kirja.
+	 *
+	 * @param selectedForDeletion the selected for deletion
+	 * @return the boolean
+	 * @throws Exception the exception
+	 */
 	// new delete_kirja method
 		public static Boolean delete_kirja(Kirjatiedot selectedForDeletion) throws Exception { 
 			try {
@@ -543,11 +546,10 @@ public class Tietokanta {
 		}
 	
 	/**
-	 * This method deletes asiakas from the database
-	 * 
-	 * @param int as_id to get a specific as_id and delete it
-
-	 * @throws Exception
+	 * This method deletes asiakas from the database.
+	 *
+	 * @param as_id the as id
+	 * @throws Exception the exception
 	 */
 	public static void delete_asiakas(int as_id) throws Exception { 
 		try {
@@ -563,6 +565,12 @@ public class Tietokanta {
 		}
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws Exception the exception
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		//delete_kirja(34);// this works

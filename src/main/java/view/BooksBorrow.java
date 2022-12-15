@@ -33,57 +33,103 @@ import model.Kirjatiedot;
 import model.LangPackage;
 import model.Tietokanta;
 
+// TODO: Auto-generated Javadoc
 public class BooksBorrow implements Initializable {
+	
+	/** The getcontroller. */
 	M2V getcontroller = new Controller();
+	
+	/** The postcontroller. */
 	V2M postcontroller = new Controller();
 
+	/**
+	 * Instantiates a new books borrow.
+	 */
 	public BooksBorrow() {
 
 	}
 
+	/** The asiakas ID. */
 	// TextFields
 	@FXML
 	private TextField asiakasID;
+	
+	/** The kirja ID. */
 	@FXML
 	private TextField kirjaID;
+	
+	/** The asiakas tiedot. */
 	@FXML
 	private Text asiakasTiedot;
 
+	/** The tableview. */
 	// Tableview
 	@FXML
 	private TableView<Kirjatiedot> tableview;
+	
+	/** The julkasuvuosi. */
 	@FXML
 	private TableColumn<Kirjatiedot, String> julkasuvuosi;
+	
+	/** The kirja ISBN. */
 	@FXML
 	private TableColumn<Kirjatiedot, Long> kirja_ISBN;
+	
+	/** The kirjoittajat. */
 	@FXML
 	private TableColumn<Kirjatiedot, String> kirjoittajat;
+	
+	/** The kunstantaja. */
 	@FXML
 	private TableColumn<Kirjatiedot, String> kunstantaja;
+	
+	/** The kuva. */
 	@FXML
 	private TableColumn<Kirjatiedot, String> kuva;
+	
+	/** The nimi. */
 	@FXML
 	private TableColumn<Kirjatiedot, String> nimi;
+	
+	/** The sivumäärä. */
 	@FXML
 	private TableColumn<Kirjatiedot, Integer> sivumäärä;
 
+	/** The btn close. */
 	// Buttons
 	@FXML
 	private Button btnClose;
+	
+	/** The delete. */
 	@FXML
 	private Button delete;
+	
+	/** The edit. */
 	@FXML
 	private Button edit;
+	
+	/** The add book. */
 	@FXML
 	private Button addBook;
+	
+	/** The create book. */
 	@FXML
 	private Button createBook;
+	
+	/** The isbn. */
 	@FXML
 	private TextField ISBN;
 
+	/** The connection. */
 	Connection connection;
+	
+	/** The res. */
 	ResultSet res = null;
+	
+	/** The pst. */
 	PreparedStatement pst = null;
+	
+	/** The data. */
 	ObservableList<Kirjatiedot> data;
 
 	/**
@@ -105,13 +151,11 @@ public class BooksBorrow implements Initializable {
 		}
 	}
 
+	
 	/**
-	 * addItem method adds the new items to database.
-	 * New item added by Rajapinta class
-	 * 
-	 * @author Fatlum Gerguri
+	 * Adds the item.
+	 *
 	 * @param event the event
-	 * @throws IOException 
 	 */
 	@FXML
 	void addItem(ActionEvent event) {
@@ -134,11 +178,11 @@ public class BooksBorrow implements Initializable {
 		
 
 	}
+	
+	
 	/**
-	 * Initialize default method from Scene Builder where this context of the page show details of  the input fields.
-	 * Also it call the method UpdateTable() where it update the book.
-	 * 
-	 * @author Fatlum Gerguri
+	 * Initialize.
+	 *
 	 * @param url the url
 	 * @param rb the rb
 	 */
@@ -146,12 +190,9 @@ public class BooksBorrow implements Initializable {
 		UpdateTable();
 	}
 
+	
 	/**
-	 * This method update the book which is selected.
-	 *
-	 * @author Fatlum Gerguri
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * Update table.
 	 */
 	public void UpdateTable() {
 		this.data = FXCollections.observableArrayList();
