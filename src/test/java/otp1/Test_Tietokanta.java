@@ -15,11 +15,6 @@ public class Test_Tietokanta {
 	}
 
 	@Test
-	void test_Tietokanta_admin_salasana() throws Exception {
-		assertEquals("123", Tietokanta.get_admin(1).getSalasana(), "Tiedot eivät vastaa oikeita");
-	}
-
-	@Test
 	void test_Tietokanta_get_asiakas() throws Exception {
 		assertEquals("erd", Tietokanta.get_asiakas(5).getEtunimi(), "Tiedot eivät vastaa oikeita");
 	}
