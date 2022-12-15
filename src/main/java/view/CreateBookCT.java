@@ -21,6 +21,7 @@ public class CreateBookCT extends EngineUI implements Initializable {
 
 	Parent root;
 
+	/** The buttons fxml */
 	@FXML
 	private TextField luoISBN;
 	@FXML
@@ -42,6 +43,9 @@ public class CreateBookCT extends EngineUI implements Initializable {
 	@FXML
 	private Button peruuttaa;
 
+	/**
+	 * initialize - 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -67,12 +71,24 @@ public class CreateBookCT extends EngineUI implements Initializable {
 		changeScene();
 	}
 
+	/**
+	 * peruuttaa - method that canel the operation.
+	 *
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void peruuttaa(ActionEvent event) throws IOException {
 
 		changeScene();
 	}
 
+	/**
+	 * Check login - method that check the credentials of the user befor log in to the system.
+	 *
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void changeScene() throws IOException {
 
 		try {

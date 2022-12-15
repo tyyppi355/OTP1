@@ -25,16 +25,23 @@ public class CreateUser {
 	/** Text Fields. */
 	@FXML
 	private TextField luoEtunimi;
+	/* Text Field luoKaupunki */
 	@FXML
 	private TextField luoKaupunki;
+
+	/*Text Field luoOsoite */
 	@FXML
 	private TextField luoOsoite;
+	/*Text Field luoPNumero */
 	@FXML
 	private TextField luoPNumero;
+	/*Text Field luoPuheNumero */
 	@FXML
 	private TextField luoPuheNumero;
+	/*Text Field luoSPosti */
 	@FXML
 	private TextField luoSPosti;
+	/*Text Field luoSukunimi */
 	@FXML
 	private TextField luoSukunimi;
 

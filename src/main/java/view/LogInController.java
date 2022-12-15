@@ -90,7 +90,7 @@ public class LogInController extends main {
 	}
 
 	/**
-	 * Initialize.
+	 * Initialize that done by Scene Builder.
 	 */
 	@FXML
 	public void initialize() {

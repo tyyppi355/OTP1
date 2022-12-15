@@ -192,7 +192,6 @@ public class KirjantiedotController extends EngineUI implements Initializable {
 		try {
 			UpdateTable();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

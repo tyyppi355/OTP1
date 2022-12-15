@@ -29,35 +29,52 @@ public class DashboardController extends EngineUI implements Initializable {
 
 	}
 
+	/** The buttons fxml */
+	// button buttonLogOut
 	@FXML
 	private Button buttonLogOut;
+	/*Table Column erapaiva */
 	@FXML
 	private TableColumn<Kirjatiedot, String> erapaivaColumn;
+	/*Table Column idcolumn */
 	@FXML
 	private TableColumn<Kirjatiedot, Integer> idColumn;
+	/*Button lainaaButton */
 	@FXML
 	private Button lainaaButton;
+	/*Button lainaaButtonBottom */
 	@FXML
 	private Button lainaaButtonBottom;
+	/*Table View lainaaView */
 	@FXML
 	private TableView<Kirjatiedot> lainaaView;
+	/* Button lainassaButton */
 	@FXML
 	private Button lainassaButton;
+	/* Table Column nimiColumn */
 	@FXML
 	private TableColumn<Kirjatiedot, String> nimiColumn;
+	/* Button palauttaaButtonBottom */
 	@FXML
 	private Button palauttaaButtonBottom;
+	/* Button palautusButton */
 	@FXML
 	private Button palautusButton;
+	/*Text field search */
 	@FXML
 	private TextField search;
 
+	/* Button search */
 	@FXML
 	private Button searchButton;
 
+	/* Observablelist for Kirjatiedot test case */
 	ObservableList<Kirjatiedot> data = FXCollections.observableArrayList(
 			new Kirjatiedot(31223, "SceneBuilder", "Oracle", "Oracle CO.", "Java Framework", 2000, 300));
 
+	/*
+	* initilize method for table
+	*/		
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
@@ -68,6 +85,12 @@ public class DashboardController extends EngineUI implements Initializable {
 		lainaaView.setItems(data);
 	}
 
+	/**
+	 * User log out - method that log out from system.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void userLogOut(ActionEvent event) throws IOException {
 		buttonLogOut.getScene().getWindow().hide();
@@ -82,7 +105,12 @@ public class DashboardController extends EngineUI implements Initializable {
 		primaryStage.show();
 
 	}
-
+	/**
+	 * Change scene - method after log in to open new window.
+	 * 
+	 *@author Fatlum Gerguri
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void changeScene() throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("Library.fxml"),LangPackage.rBundle);

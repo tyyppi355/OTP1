@@ -5,7 +5,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -27,7 +26,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
-import model.Kirja;
 import model.Kirjatiedot;
 import model.LangPackage;
 import model.Tietokanta;
@@ -112,7 +110,7 @@ public class ReturnBookC implements Initializable {
 	}
 
 	/**
-	 * This method update the book which is selected.
+	 * This method update the selected book data.
 	 *
 	 * @author Fatlum Gerguri
 	 */
@@ -147,14 +145,13 @@ public class ReturnBookC implements Initializable {
 			data.add(t);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * Btn peruuttaa - .
+	 * Btn peruuttaa - cancel the operation.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
