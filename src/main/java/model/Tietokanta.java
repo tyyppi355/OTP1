@@ -15,6 +15,13 @@ public class Tietokanta {
 	 * @throws Exception
 	 */
 	public static Connection getConnection() throws Exception {
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		try {
 
 			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk";

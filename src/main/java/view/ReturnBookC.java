@@ -2,14 +2,13 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
-
-import org.mariadb.jdbc.Connection;
 
 import controller.Controller;
 import controller.M2V;

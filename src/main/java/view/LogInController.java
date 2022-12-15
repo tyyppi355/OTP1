@@ -20,11 +20,11 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import application.Main;
+import application.main;
 import controller.Controller;
 import controller.V2M;
 
-public class LogInController extends Main {
+public class LogInController extends main {
 
 	private String inputNullError = "Please enter your data.";
 	private String inputWrongError = "Wrong username or password";
