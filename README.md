@@ -19,32 +19,8 @@ Ohjelmassammen käytettiin Ecplise kehitysympäristöä ja projekti rakennetiin 
 
 # Asennusohjeet
 1. Laita Metropolian VPN päälle
-2. Kloonaa tämä repo omalle koneellesi
-3. Lataa JavaFx SDK omalle koneellesi https://gluonhq.com/products/javafx/
-4. Laita tietokanta.java luokkasta löytyvään getConnetion() metodiin käyttäjätunnus ja salasana
-```
-public static Connection getConnection() throws Exception {
-		try {
-			
-			String url = "jdbc:mariadb://mysql.metropolia.fi/rikukosk";
-			String username = "(Annettu käyttäjätunnus)";
-			String password = "(Annettu salasana)";
-			
-			Connection connection = DriverManager.getConnection(url,username,password);
-			
-			System.out.println("Connected!!");
-			return connection;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return null;
-	}
-```
-5. Aseta Run-configuration VM asetuksiin seuraava argumentti:
-```
---module-path "C:\javafx-sdk-19\lib" --add-modules javafx.controls,javafx.fxml
-```
-module-path pitää laitaa samaksi missä javafx sijaitsee.
+2. Käynnistä ohjelma ja kirjaudu sisään
+
 
 
 
